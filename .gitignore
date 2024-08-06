@@ -1,0 +1,10 @@
+# Visual Studio specific
+.vs/
+
+# Build directories
+bin/
+obj/
+
+# Ignore bin and obj directories
+**/bin/
+**/obj/
