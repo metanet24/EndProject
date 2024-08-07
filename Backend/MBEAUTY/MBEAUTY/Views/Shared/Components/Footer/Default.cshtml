@@ -1,9 +1,11 @@
-﻿<footer data-aos="fade-up">
+﻿@model FooterVM
+
+<footer data-aos="fade-up">
     <div class="foot">
         <div class=" foot-row">
             <div class="">
                 <div class="ft-logo">
-                    <a href="#"><img src="https://www.ncodetechnologies.com/zooy/images/footer-logo.png" alt="ZOOY - Modern &amp; Beautiful Auto Parts HTML5 &amp; Bootstrap 4 Template"></a>
+                    <a asp-action="Index" asp-controller="Home"><img style="width: 80px" height="80px" src="~/assets/images/@Model.Settings["Logo"]" alt="" /></a>
                 </div>
                 <div class="cmn-detail">
                     <p>
