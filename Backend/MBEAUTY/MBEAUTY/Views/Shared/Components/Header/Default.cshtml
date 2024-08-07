@@ -1,0 +1,67 @@
+﻿@model HeaderVM
+
+<header>
+    <div class="main">
+        <div class="tophead">
+            <div class="wrappertophead">
+                <a class="mail sosials" href=""><i style="margin-right: 5px;" class="bi bi-envelope foot-icon"></i><span class="mt">@Model.Settings["Email"]</span></a>
+                <a class="tel sosials" href="#"><i class="bi bi-telephone-fill foot-icon"></i><span class="mt">@Model.Settings["PhoneNumber"]</span></a>
+            </div>
+            <div class="sosial">
+                <a class="sosials" asp-action="SignIn" asp-controller="Account" class="p-2 pl-0"><span class="login">LOG IN</span></a>
+                <a class="sosials" asp-action="SignUp" asp-controller="Account" class="p-2 pl-0"><span class="login">SIGN UP</span></a>
+                <a class="sosials" href="#">@Html.Raw(Model.Settings["Twitter"])</a>
+                <a class="sosials" href="#">@Html.Raw(Model.Settings["Facebook"])</a>
+                <a class="sosials" href="#">@Html.Raw(Model.Settings["Linkedin"])</a>
+                <a class="sosials" href="#">@Html.Raw(Model.Settings["Instagram"])</a>
+            </div>
+        </div>
+
+        <div class="menu-wrap">
+            <input type="checkbox" class="toggler">
+            <div class="hamburger"><div></div></div>
+            <div class="menu">
+                <div>
+                    <div>
+                        <ul>
+                            <li><a asp-action="Index" asp-controller="Home">Home</a></li>
+                            <li><a asp-action="Index" asp-controller="About">About</a></li>
+                            <li><a asp-action="Index" asp-controller="Shop">Shop</a></li>
+                            <li><a asp-action="Index" asp-controller="Blog">Blog</a></li>
+                            <li><a asp-action="Index" asp-controller="Contact">Contact</a></li>
+                            <li><a asp-action="SignIn" asp-controller="Account">Login</a>/<a asp-action="SignUp" asp-controller="Account">Sign up</a></li>
+                            <li class="basket">
+                                <a class="basket-nav" asp-action="Index" asp-controller="Basket">
+                                    <span><i class="fas fa-shopping-basket basket "></i></span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <nav class="nav">
+                <div class="logo"><a asp-action="Index" asp-controller="Home"><img src="https://www.ncodetechnologies.com/zooy/images/logo.png" alt=""></a> </div>
+                <div class="navdiv">
+                    <ul class="navul">
+                        <li class="navli"><a class="nava" asp-action="Index" asp-controller="Home">HOME</a></li>
+                        <li class="navli"><a class="nava" asp-action="Index" asp-controller="About">ABOUT</a></li>
+                        <li class="navli"><a class="nava" asp-action="Index" asp-controller="Shop">SHOP</a></li>
+                        <li class="navli"><a class="nava" asp-action="Index" asp-controller="Blog">BLOG</a></li>
+                        <li class="navli"><a class="nava" asp-action="Index" asp-controller="Contact">CONTACT</a></li>
+                        <li class="basket">
+                            <a class="basket-nav" asp-action="Index" asp-controller="Basket">
+                                <span><i class="fas fa-shopping-basket basket "></i></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+        </div>
+    </div>
+
+</header>
