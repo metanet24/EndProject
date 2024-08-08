@@ -10,6 +10,7 @@ namespace MBEAUTY.Data
 
         public DbSet<Setting> Settings { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<AdditionalInfo> AdditionalInfos { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Brand> Brands { get; set; }

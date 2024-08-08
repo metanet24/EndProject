@@ -1,8 +1,216 @@
-﻿@{
+﻿@model HomeVM
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section data-aos="fade-in" class="slider first-sec">
+    <div class="single-item">
+        @foreach (var item in Model.Sliders)
+        {
+            <div class="slider-content" style="background-image: url(./assets/images/@item.Image);height: 800px;width: 577px;">
+            </div>
+        }
+    </div>
+</section>
+
+<section data-aos="fade-up" class="best">
+
+    <div data-aos="fade-up" class="best-seller">
+        <div class="bs-text">
+            <div><img src="https://www.ncodetechnologies.com/zooy/images/tit-deco.png" alt=""></div>
+            <span class="punchline">Top Sale On This Week</span>
+            <h2 class="sec-title">Best Seller</h2>
+        </div>
+
+        <div class="best-seller-card" style="display: flex;">
+            @foreach (var item in Model.Products.Where(m => m.DiscountPercent > 0).Take(3))
+            {
+                <div class="product-card">
+                    <div class="badge">@item.BrandName</div>
+                    <div class="product-tumb">
+                        <img src="~/assets/images/@item.ProductImages.FirstOrDefault(m => m.IsMain)?.Name" alt="">
+                    </div>
+                    <div class="product-details">
+                        <span class="product-catagory">@item.CategoryName</span>
+                        <h4><a href="">@item.Name</a></h4>
+                        <div class="product-bottom-details">
+                            <div class="product-price"><small>$@item.Price.ToString("N2")</small>$@(((item.Price / 100) * item.DiscountPercent).ToString("N2"))</div>
+                            <div class="product-links">
+                                <a href=""><i class="fa fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+</section>
+
+<section class="find-section">
+    <div class="find">
+        <div data-aos="fade-up" class="find-div">
+            <h2 class="find-h2">@Model.Products.FirstOrDefault().Description</h2>
+            <a class="btn btn-dark explore" asp-action="Detail" asp-controller="Product" asp-route-id="@Model.Products.FirstOrDefault().Id"><span>Shop Now</span></a>
+        </div>
+        <div data-aos="fade-up" class=""><img class="foto-find" src="~/assets/images/@Model.Products.FirstOrDefault().ProductImages.FirstOrDefault(m => m.IsMain)?.Name" alt=""></div>
+    </div>
+</section>
+
+<section data-aos="fade-up" class="best">
+
+    <div data-aos="fade-up" class="best-seller">
+        <div class="bs-text">
+            <div><img src="https://www.ncodetechnologies.com/zooy/images/tit-deco.png" alt=""></div>
+            <span class="punchline">The newest ones</span>
+            <h2 class="sec-title">New</h2>
+        </div>
+
+        <div class="best-seller-card" style="display: flex;">
+            @foreach (var item in Model.Products.Take(3))
+            {
+                <div class="col-3">
+
+                    <div class="product-card">
+                        <div class="badge">@item.BrandName</div>
+                        <div class="product-tumb">
+                            <img src="~/assets/images/@item.ProductImages.FirstOrDefault(m => m.IsMain)?.Name" alt="">
+                        </div>
+                        <div class="product-details">
+                            <span class="product-catagory">@item.CategoryName</span>
+                            <h4><a href="">@item.Name</a></h4>
+                            <div class="product-bottom-details">
+                                <div class="product-price">$@item.Price.ToString("N2")</div>
+                                <div class="product-links">
+                                    <a href=""><i class="fa fa-shopping-cart"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            }
+        </div>
+    </div>
+</section>
+
+
+<section data-aos="fade-up" style="background-image: url(assets/images/@Model.Banner.Image);" class="dealofday">
+    <div class="divday">
+        <h2 style="margin-bottom: 25px;">@Model.Banner.Title</h2>
+        <h4>@Model.Banner.Description</h4>
+        <div style="margin-top: 60px;">
+            <div class="countdown-timer-container">
+                <div style="display: none;" class="countdown-timer-values" id="year">2024</div>
+                <div style="display: none;" class="countdown-timer-values" id="mounth">12</div>
+                <div class="countdown-timer-values" id="days">26</div>
+                <div class="countdown-timer-values" id="hours">00</div>
+                <div class="countdown-timer-values" id="minutes">00</div>
+                <div class="countdown-timer-values" id="seconds">00</div>
+                <div class="countdown-div">days</div>
+                <div class="countdown-div">hours</div>
+                <div class="countdown-div">minutes</div>
+                <div class="countdown-div">seconds</div>
+            </div>
+        </div>
+        <div class="slide-btn">
+            <a class="btn common-btn btnday" asp-action="Index" asp-controller="Shop" tabindex="0"><span>Shop Now</span><i class="icon-next"></i></a>
+        </div>
+    </div>
+</section>
+
+
+<section data-aos="fade-right" class="last-new">
+    <div class="bs-text">
+        <div><img src="https://www.ncodetechnologies.com/zooy/images/tit-deco.png" alt=""></div>
+        <span class="punchline">
+            Check Our Latest Blog
+        </span>
+        <h2 class="sec-title">Latest Blog</h2>
+    </div>
+    <div class="p-categoryrow">
+        <div class="p-category-div  lastnew-div">
+            <div><img class="last-new-img" style="width: 400px;" src="~/assets/images/HB_BLUSH-PDP-SBS.jpg" alt=""></div>
+            <div class="info-last">
+                <div class="post-date">2024 august 10</div>
+                <h4><a class="blog-tit" href="blog-detail.html">Find the right blush for your skin tone</a></h4>
+                <p class="blog-dis">Huda is obsessed with achieving a filtered finish without the filter.</p>
+                <a href="blog-detail.html" class="rmore btn1">Read more <i class="icon-right-arrow"></i></a>
+            </div>
+        </div>
+        <div class="p-category-div lastnew-div">
+            <div><img class="last-new-img" style="width: 400px;" src="~/assets/images/blog2.jpg" alt=""></div>
+            <div class="info-last">
+                <div class="post-date">2024 August 15</div>
+                <h4><a class="blog-tit" href="blog-detail.html">Find the right blush for your skin tone</a></h4>
+                <p class="blog-dis">#FauxFilter is back with the same full coverage and long-lasting properties</p>
+                <a href="blog-detail.html" class="rmore btn1">Read more <i class="icon-right-arrow"></i></a>
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+
+<section data-aos="fade-in">
+    <!-- karusel -->
+
+    <div style="background-image: url(assets/images/backgroundforkarusel3.avif);" class="karusel1">
+        <div class="container">
+
+            <div class="col-12">
+
+                <div class="container1">
+                    <div class="faders">
+                        <div class="left"></div>
+                        <div class="right"></div>
+                    </div>
+
+                    <div class="items">
+                        @foreach (var item in Model.Brands)
+                        {
+                            <div class="entry">
+                                <img style="width: 100%; height: 100%;  object-fit: contain;" src="~/assets/images/@item.Logo" alt="">
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section data-aos="fade-up" class="helplinesec helplineabout">
+    <div class="helpline">
+        <div class="helpline-div">
+            <div class="icon-help"><i class="bi bi-truck icon-last icon-last1"></i></div>
+            <div class="icon-text">
+                <h3 class="last-h3">Free Delivery</h3>
+                <p class="last-p">Worldwide from $75</p>
+            </div>
+        </div>
+        <div class="helpline-div">
+            <div class="icon-help"><i class="bi bi-arrow-clockwise icon-last icon-last1"></i></div>
+            <div class="icon-text">
+                <h3 class="last-h3">EASY RETURNS</h3>
+                <p>365 days for free</p>
+            </div>
+        </div>
+        <div class="helpline-div">
+            <div class="icon-help"><i class="bi bi-wallet2 icon-last icon-last1"></i></div>
+            <div class="icon-text">
+                <h3 class="last-h3">COMFORT PAYMENTS</h3>
+                <p class="last-p">Credit Cards Available</p>
+            </div>
+        </div>
+        <div class="helpline-div sondiv">
+            <div class="icon-help"><i class="bi bi-gift icon-last icon-last1"></i></div>
+            <div class="icon-text">
+                <h3 class="last-h3">FREE GIFTS</h3>
+                <p class="last-p">Get gifts and discounts</p>
+            </div>
+        </div>
+    </div>
+</section>

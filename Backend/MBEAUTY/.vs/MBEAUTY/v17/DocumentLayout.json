@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Migrations\\20240807083815_AddedTables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:MBEAUTY\\Migrations\\20240807083815_AddedTables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|c:\\users\\emila\\onedrive\\desktop\\works\\code academy\\templates\\final project\\endproject\\backend\\mbeauty\\mbeauty\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|solutionrelative:mbeauty\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|c:\\users\\emila\\onedrive\\desktop\\works\\code academy\\templates\\final project\\endproject\\backend\\mbeauty\\mbeauty\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|solutionrelative:mbeauty\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|c:\\users\\emila\\onedrive\\desktop\\works\\code academy\\templates\\final project\\endproject\\backend\\mbeauty\\mbeauty\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|solutionrelative:mbeauty\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,27 +31,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "20240807083815_AddedTables.cs",
-              "DocumentMoniker": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Migrations\\20240807083815_AddedTables.cs",
-              "RelativeDocumentMoniker": "MBEAUTY\\Migrations\\20240807083815_AddedTables.cs",
-              "ToolTip": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Migrations\\20240807083815_AddedTables.cs",
-              "RelativeToolTip": "MBEAUTY\\Migrations\\20240807083815_AddedTables.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-07T08:38:15.4Z",
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "MBEAUTY\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\appsettings.Development.json",
+              "RelativeToolTip": "MBEAUTY\\appsettings.Development.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-08T13:52:57.941Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Data\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "MBEAUTY\\Data\\AppDbContext.cs",
-              "ToolTip": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Data\\AppDbContext.cs",
-              "RelativeToolTip": "MBEAUTY\\Data\\AppDbContext.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAcwA4AAAAwAAAA",
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "MBEAUTY\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "MBEAUTY\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAgwBwAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-07T08:30:37.748Z",
+              "WhenOpened": "2024-08-08T07:55:06.195Z",
               "EditorCaption": ""
             }
           ]

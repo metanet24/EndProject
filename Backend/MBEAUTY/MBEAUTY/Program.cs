@@ -36,6 +36,10 @@ builder.Services.Configure<IdentityOptions>(option =>
 });
 
 builder.Services.AddScoped<ISettingService, SettingService>();
+builder.Services.AddScoped<ISliderService, SliderService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IBannerService, BannerService>();
+builder.Services.AddScoped<IBrandService, BrandService>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
