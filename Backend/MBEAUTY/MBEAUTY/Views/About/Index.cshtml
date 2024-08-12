@@ -1,0 +1,85 @@
+﻿@model AboutVM
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<section data-aos="fade-up" style="background-image: url(assets/images/about-backgroundrealfirst.jpg);" class="first-sec dealofday intro aos-init aos-animate">
+    <div data-aos="fade-right" class="divday">
+        <p class="p-intro">HOME<i class="bi bi-chevron-right"></i><span class="span-intro">ABOUT</span></p>
+        <h4 class="h4-intro">ABOUT US</h4>
+    </div>
+</section>
+
+<section data-aos="fade-in" class="welcome">
+    <div data-aos="fade-right" class="welcome-div">
+        <h2 class="welcome-h2">WELCOME TO Mbeauty</h2>
+        <p class="welcome-p1">Shopping the way you like it!</p>
+        <p class="welcome-p2">Discover your true beauty with our premium makeup products, curated to enhance your natural radiance. Explore the latest trends and timeless classics to perfect your look for any occasion.</p>
+        <div class="welcome-div2">
+            <div><img src="assets/images/signaturem.png" alt=""></div>
+            <div class="welcome-info2">
+                <p class="ceo">Founder</p>
+                <p class="ceo-name">Matanat Abbas</p>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="our-history">
+    <div class="our-history-div">
+        <div data-aos="fade-in"><img class="welcome-img" src="~/assets/images/@Model.Image" style="height: 500px;margin-top: 50px;" alt=""></div>
+        <div data-aos="fade-in">
+            <p class="our-p1">OUR HISTORY</p>
+            <h2 class="our-h2">
+                @Model.Title
+            </h2>
+            <p class="our-p">
+                @Model.Description
+            </p>
+            <a asp-action="Index" asp-controller="Shop" class="our-btn">Shop Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- slider -->
+
+<section data-aos="zoom-in">
+    <!-- Testimonial Carousel -->
+    <div class="testimonial-reel">
+        @foreach (var item in Model.Famous)
+        {
+            <div>
+                <div class="box">
+                    <figure class="image">
+                        <img class="img-fluid rounded-circle" src="~/assets/images/@item.Image">
+                    </figure>
+
+                    <div class="test-component">
+                        <article class="test-title">
+
+                            <h4>
+                                @item.FullName
+                            </h4>
+
+                        </article>
+
+                        <article class="test-content">
+                            <p>
+                                @item.About
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <!-- / Testimonial Carousel -->
+</section>
+
+@await Component.InvokeAsync("Service")
+
+@section Scripts {
+    <script src="~/js/slider.js"></script>
+}

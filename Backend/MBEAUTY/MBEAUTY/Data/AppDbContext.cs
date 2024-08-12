@@ -22,5 +22,6 @@ namespace MBEAUTY.Data
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<BlogImage> BlogImages { get; set; }
+        public DbSet<Famous> Famous { get; set; }
     }
 }

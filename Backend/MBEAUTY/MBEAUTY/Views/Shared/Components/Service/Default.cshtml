@@ -1,0 +1,16 @@
+﻿@model IEnumerable<ServiceListVM>
+
+<section data-aos="fade-up" class="helplinesec helplineabout">
+    <div class="helpline">
+        @foreach (var item in Model)
+        {
+            <div class="helpline-div @(item == Model.Last() ? "sondiv" : "")">
+                <div class="icon-help">@Html.Raw(item.Icon)</div>
+                <div class="icon-text">
+                    <h3 class="last-h3">@item.Title</h3>
+                    <p class="last-p">@item.Description</p>
+                </div>
+            </div>
+        }
+    </div>
+</section>

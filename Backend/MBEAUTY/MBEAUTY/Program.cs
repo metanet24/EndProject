@@ -42,6 +42,8 @@ builder.Services.AddScoped<IBannerService, BannerService>();
 builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddScoped<IServiceService, ServiceService>();
 builder.Services.AddScoped<IBlogService, BlogService>();
+builder.Services.AddScoped<IAboutService, AboutService>();
+builder.Services.AddScoped<IFamousService, FamousService>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 

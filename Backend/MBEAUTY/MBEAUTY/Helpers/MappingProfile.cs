@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using MBEAUTY.Models;
+using MBEAUTY.ViewModels.AboutVms;
 using MBEAUTY.ViewModels.BannnerVMs;
 using MBEAUTY.ViewModels.BlogVMs;
 using MBEAUTY.ViewModels.BrandVMs;
+using MBEAUTY.ViewModels.FamousVms;
 using MBEAUTY.ViewModels.ProductVMs;
 using MBEAUTY.ViewModels.ServicesVMs;
 using MBEAUTY.ViewModels.SliderVMs;
@@ -22,6 +24,10 @@ namespace MBEAUTY.Helpers
             CreateMap<Service, ServiceListVM>();
 
             CreateMap<Blog, BlogListVM>();
+
+            CreateMap<About, AboutVM>();
+
+            CreateMap<Famous, FamousListVM>();
 
             CreateMap<Product, ProductListVM>()
                 .ForMember(dest => dest.BrandName, opt => opt.MapFrom(src => src.Brand.Name))
