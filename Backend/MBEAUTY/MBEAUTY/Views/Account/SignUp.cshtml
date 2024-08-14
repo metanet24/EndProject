@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewData["Title"] = "SignUp";
+}
+
+<section data-aos="fade-up" style="background-image: url(assets/images/about-backgroundrealfirst.jpg);" class="first-sec dealofday intro aos-init aos-animate">
+    <div data-aos="fade-right" class="divday">
+        <p class="p-intro">HOME<i class="bi bi-chevron-right"></i><span class="span-intro">REGISTER</span></p>
+        <h4 class="h4-intro">REGISTER</h4>
+    </div>
+</section>
+
+<section class="login-sec">
+    <div class="login-div">
+        <div class="login-right">
+            <div class="form-heading">
+                <h2 class="form-tit">Create a New Account</h2>
+                <p class="form-tit2">Add Your Personal Details</p>
+            </div>
+            <form action>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input type="email" class="form-control-1" placeholder="First Name*" name="email">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input type="email" class="form-control-1" placeholder="Last Name*" name="email">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input type="email" class="form-control-1" placeholder="Email Address *" name="email">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input type="password" class="form-control-2" placeholder="Password *" name="password">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn submit-btn register-btn">Register</button>
+                </div>
+            </form>
+
+
+        </div>
+
+        <div>
+            <div class="login-left register-left">
+                <h2 class="login-h2 register-h2">Already have an Account?</h2>
+                <a class="btn btn1 btn-login" asp-action="SignIn"><span>Login Now</span><i class="icon-next"></i></a>
+            </div>
+        </div>
+    </div>
+
+</section>

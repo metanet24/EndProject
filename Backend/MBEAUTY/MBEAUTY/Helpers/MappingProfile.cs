@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using MBEAUTY.Models;
 using MBEAUTY.ViewModels.AboutVms;
+using MBEAUTY.ViewModels.AdvertVMs;
 using MBEAUTY.ViewModels.BannnerVMs;
 using MBEAUTY.ViewModels.BlogVMs;
 using MBEAUTY.ViewModels.BrandVMs;
+using MBEAUTY.ViewModels.CategoryVMs;
 using MBEAUTY.ViewModels.FamousVms;
 using MBEAUTY.ViewModels.ProductVMs;
 using MBEAUTY.ViewModels.ServicesVMs;
@@ -17,8 +19,6 @@ namespace MBEAUTY.Helpers
         {
             CreateMap<Slider, SliderListVM>();
 
-            CreateMap<Brand, BrandListVM>();
-
             CreateMap<Banner, BannerVM>();
 
             CreateMap<Service, ServiceListVM>();
@@ -28,6 +28,13 @@ namespace MBEAUTY.Helpers
             CreateMap<About, AboutVM>();
 
             CreateMap<Famous, FamousListVM>();
+
+            CreateMap<Brand, BrandListVM>();
+
+            CreateMap<Advert, AdvertVM>();
+
+            CreateMap<Category, CategoryListVM>()
+                .ForMember(dest => dest.ProductCount, opt => opt.MapFrom(src => src.Products.Count()));
 
             CreateMap<Product, ProductListVM>()
                 .ForMember(dest => dest.BrandName, opt => opt.MapFrom(src => src.Brand.Name))

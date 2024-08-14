@@ -1,0 +1,58 @@
+﻿@model IEnumerable<BlogListVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<section data-aos="fade-up" style="background-image: url(assets/images/about-backgroundrealfirst.jpg);" class="first-sec dealofday intro aos-init aos-animate">
+    <div data-aos="fade-right" class="divday">
+        <p class="p-intro">HOME<i class="bi bi-chevron-right"></i><span class="span-intro">BLOG</span></p>
+        <h4 class="h4-intro">BLOG</h4>
+    </div>
+</section>
+
+
+<section style="margin-bottom: 50px;" data-aos="fade-right" class="last-new">
+    <div class="bs-text">
+        <div><img src="https://www.ncodetechnologies.com/zooy/images/tit-deco.png" alt=""></div>
+        <span class="punchline">
+            Check Our Latest News
+        </span>
+        <h2 class="sec-title">BLOG</h2>
+    </div>
+    <div class="p-categoryrow">
+        @foreach (var item in Model)
+        {
+            <div @(item == Model.Last() ? "data-aos='fade-up'" : "") class="p-category-div lastnew-div">
+                <div><img class="last-new-img" style="width: 400px;" src="~/assets/images/@item.BlogImages.FirstOrDefault(m => m.IsMain)?.Name" alt=""></div>
+                <div class="info-last">
+                    <div class="post-date">@item.CreatedAt.ToString("yyyy MMMM dd")</div>
+                    <h4><a class="blog-tit" asp-action="Detail" asp-route-id="@item.Id">@item.Name</a></h4>
+                    <p class="blog-dis">@item.Description</p>
+                    <a asp-action="Detail" asp-route-id="@item.Id" class="rmore btn1">Read more <i class="icon-right-arrow"></i></a>
+                </div>
+            </div>
+        }
+    </div>
+
+</section>
+
+
+
+<nav data-aos="fade-right" style="display: flex; justify-content: center; margin-bottom: 20px;" aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

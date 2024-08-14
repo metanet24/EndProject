@@ -38,12 +38,14 @@ builder.Services.Configure<IdentityOptions>(option =>
 builder.Services.AddScoped<ISettingService, SettingService>();
 builder.Services.AddScoped<ISliderService, SliderService>();
 builder.Services.AddScoped<IProductService, ProductService>();
-builder.Services.AddScoped<IBannerService, BannerService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IBrandService, BrandService>();
+builder.Services.AddScoped<IBannerService, BannerService>();
 builder.Services.AddScoped<IServiceService, ServiceService>();
 builder.Services.AddScoped<IBlogService, BlogService>();
 builder.Services.AddScoped<IAboutService, AboutService>();
 builder.Services.AddScoped<IFamousService, FamousService>();
+builder.Services.AddScoped<IAdvertService, AdvertService>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 

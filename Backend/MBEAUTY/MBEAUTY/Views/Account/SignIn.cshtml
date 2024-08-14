@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "SignIn";
+}
+
+<section data-aos="fade-up" style="background-image: url(assets/images/about-backgroundrealfirst.jpg);" class="first-sec dealofday intro aos-init aos-animate">
+    <div data-aos="fade-right" class="divday">
+        <p class="p-intro">HOME<i class="bi bi-chevron-right"></i><span class="span-intro">LOGIN</span></p>
+        <h4 class="h4-intro">LOGIN</h4>
+    </div>
+</section>
+
+<section class="login-sec">
+    <div class="login-div">
+        <div>
+            <div class="login-left">
+                <h2 class="login-h2">New Customer</h2>
+                <p class="login-p">Register Account</p>
+                <p class="login-p2">By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
+                <a class="btn btn1 btn-login" asp-action="SignUp"><span>Create Now</span><i class="icon-next"></i></a>
+            </div>
+        </div>
+
+        <div class="login-right">
+            <div class="form-heading">
+                <h2 class="form-tit">Returning Customer</h2>
+                <p class="form-tit2">I am a returning customer</p>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <input type="email" class="form-control-1" placeholder="Email Address *" name="email">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <input type="password" class="form-control-2" placeholder="Password *" name="password">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn submit-btn">Sign In</button>
+            </div>
+        </div>
+    </div>
+
+</section>
