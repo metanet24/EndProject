@@ -1,5 +1,6 @@
 ﻿using MBEAUTY.Services.Interfaces;
 using MBEAUTY.ViewModels;
+using MBEAUTY.ViewModels.ProductVMs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MBEAUTY.Controllers
@@ -28,6 +29,14 @@ namespace MBEAUTY.Controllers
                 Brands = await _brandService.GetAllAsync(),
                 Advert = await _advertService.GetAsync()
             };
+
+            return View(model);
+        }
+
+        public async Task<IActionResult> Detail(int id)
+        {
+            ProductDetailVM model = await _productService.GetByIdAsync(id);
+            model.Products = await _productService.GetAllAsync();
 
             return View(model);
         }

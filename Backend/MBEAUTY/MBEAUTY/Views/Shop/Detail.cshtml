@@ -1,0 +1,97 @@
+﻿@model ProductDetailVM
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<section data-aos="fade-up" style="background-image: url(assets/images/about-backgroundrealfirst.jpg);" class="first-sec dealofday intro aos-init aos-animate">
+    <div data-aos="fade-right" class="divday">
+        <p class="p-intro">HOME<i class="bi bi-chevron-right"></i><span class="span-intro">SHOP</span></p>
+        <h4 class="h4-intro">SHOP DETAILS</h4>
+    </div>
+</section>
+
+<section>
+
+    <div class="product-single">
+        <div><img style="border: 1px solid black;" class="product-pho" src="~/assets/images/@Model.ProductImages.FirstOrDefault(m => m.IsMain)?.Name" alt=""></div>
+        <div class="des">
+            <h5 class="product-category">@Model.CategoryName</h5>
+            <h2 class="product-tit">@Model.Name</h2>
+            <div class="price ">$@Model.Price.ToString("N2")</div>
+            <div class="short-discription" style="margin-top: 47px;">
+                <p class="pdi">@Model.Description</p>
+            </div>
+            <div class="cart-btn-div" style="margin-top: 100px;">
+
+                <div class="cart">
+                    <a class="cart-btn" href="#"><i class="bi bi-cart-check-fill" style="margin-right: 5px;"></i>Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="informat">
+        <h2 style=" margin-top: 100px;">Additional Information</h2>
+        <table style=" margin-top: 50px;" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Skin type</th>
+                    <td colspan="2">@Model.SkinType</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Shades</th>
+                    <td colspan="2">@Model.Shades</td>
+                </tr>
+                <tr>
+                    <th scope="row">Brand</th>
+                    <td colspan="2">@Model.BrandName</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+
+<section style="margin-top: 70px;" data-aos="fade-up" class="best">
+
+    <div class="best-seller">
+        <div class="bs-text">
+            <div><img src="https://www.ncodetechnologies.com/zooy/images/tit-deco.png" alt=""></div>
+            <span class="punchline">Top Sale On This Week</span>
+            <h2 class="sec-title">Latest products</h2>
+        </div>
+
+        <div class="best-seller-card" style="display: flex;">
+            @foreach (var item in Model.Products.Take(3))
+            {
+                <div class="product-card">
+                    <div class="badge">@item.BrandName</div>
+                    <div class="product-tumb">
+                        <img src="~/assets/images/@item.ProductImages.FirstOrDefault(m => m.IsMain)?.Name" alt="">
+                    </div>
+                    <div class="product-details">
+                        <span class="product-catagory">@item.CategoryName</span>
+                        <h4><a href="">@item.Name</a></h4>
+                        <div class="product-bottom-details">
+                            @if (item.DiscountPercent > 0)
+                            {
+                                <div class="product-price"><small>$@item.Price.ToString("N2")</small>$@(((item.Price / 100) * item.DiscountPercent).ToString("N2"))</div>
+                            }
+                            else
+                            {
+                                <div class="product-price">$@item.Price.ToString("N2")</div>
+                            }
+                            <div class="product-links">
+                                <a href=""><i class="fa fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+</section>

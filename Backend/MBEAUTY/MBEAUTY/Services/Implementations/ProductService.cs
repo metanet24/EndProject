@@ -46,12 +46,18 @@ namespace MBEAUTY.Services.Implementations
             return _mapper.Map<IEnumerable<ProductListVM>>(products);
         }
 
-        public async Task<Product> GetByIdAsync(int id)
+        public async Task<ProductDetailVM> GetByIdAsync(int id)
         {
-            return await _context.Products
+            Product product = await _context.Products
+                .Where(m => !m.SoftDeleted)
                 .Include(m => m.ProductImages)
                 .Include(m => m.Category)
-                .FirstOrDefaultAsync(m => !m.SoftDeleted && m.Id == id);
+                .Include(m => m.Brand)
+                .Include(m => m.AdditionalInfo)
+                .OrderByDescending(m => m.Id)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            return _mapper.Map<ProductDetailVM>(product);
         }
     }
 }

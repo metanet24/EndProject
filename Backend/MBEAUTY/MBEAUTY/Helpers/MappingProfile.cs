@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
 using MBEAUTY.Models;
 using MBEAUTY.ViewModels.AboutVms;
+using MBEAUTY.ViewModels.AccountVMs;
 using MBEAUTY.ViewModels.AdvertVMs;
 using MBEAUTY.ViewModels.BannnerVMs;
 using MBEAUTY.ViewModels.BlogVMs;
 using MBEAUTY.ViewModels.BrandVMs;
 using MBEAUTY.ViewModels.CategoryVMs;
+using MBEAUTY.ViewModels.ContactVMs;
 using MBEAUTY.ViewModels.FamousVms;
 using MBEAUTY.ViewModels.ProductVMs;
 using MBEAUTY.ViewModels.ServicesVMs;
@@ -23,8 +25,6 @@ namespace MBEAUTY.Helpers
 
             CreateMap<Service, ServiceListVM>();
 
-            CreateMap<Blog, BlogListVM>();
-
             CreateMap<About, AboutVM>();
 
             CreateMap<Famous, FamousListVM>();
@@ -33,12 +33,20 @@ namespace MBEAUTY.Helpers
 
             CreateMap<Advert, AdvertVM>();
 
+            CreateMap<ContactAddVM, Contact>();
+
+            CreateMap<SignUpVM, AppUser>();
+
+            CreateMap<Blog, BlogListVM>();
+            CreateMap<Blog, BlogDetailVM>();
+
             CreateMap<Category, CategoryListVM>()
                 .ForMember(dest => dest.ProductCount, opt => opt.MapFrom(src => src.Products.Count()));
 
-            CreateMap<Product, ProductListVM>()
-                .ForMember(dest => dest.BrandName, opt => opt.MapFrom(src => src.Brand.Name))
-                .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name));
+            CreateMap<Product, ProductListVM>();
+            CreateMap<Product, ProductDetailVM>()
+                .ForMember(dest => dest.SkinType, opt => opt.MapFrom(src => src.AdditionalInfo.SkinType))
+                .ForMember(dest => dest.Shades, opt => opt.MapFrom(src => src.AdditionalInfo.Shades));
         }
     }
 }

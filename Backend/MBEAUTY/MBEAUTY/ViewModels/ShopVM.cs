@@ -11,5 +11,6 @@ namespace MBEAUTY.ViewModels
         public IEnumerable<CategoryListVM> Categories { get; set; }
         public IEnumerable<BrandListVM> Brands { get; set; }
         public AdvertVM Advert { get; set; }
+        public ProductDetailVM Product { get; set; }
     }
 }

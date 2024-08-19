@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ContactAddVM
+
+@{
     ViewData["Title"] = "Index";
 }
 
@@ -11,10 +13,8 @@
 
 
 <section>
-
     <!-- contact -->
     <div>
-
         <div class="container">
             <div class="row">
                 <div data-aos="fade-left" class="col-md-3">
@@ -74,10 +74,7 @@
 
         </div>
     </div>
-
-
 </section>
-
 
 <section class="ftco-section">
     <div class="container">
@@ -88,42 +85,45 @@
                         <div class="col-md-6 d-flex align-items-stretch">
                             <div id="map">
                                 <iframe data-aos="fade-in" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d24313.215380891517!2d49.86191205!3d40.3833254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1628778602654!5m2!1sen!2s" width="100%" height="644px" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-
                             </div>
                         </div>
                         <div data-aos="fade-in" class="col-md-6">
                             <div class="contact-wrap w-100 p-md-5 p-4">
                                 <h3 class="mb-4">Contact Us</h3>
 
-                                <form id="contactForm" name="contactForm" class="contactForm">
+                                <form method="post" id="contactForm" name="contactForm" class="contactForm">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label style="color: black;" class="label" for="name">Full Name</label>
-                                                <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                                                <input asp-for="FullName" class="form-control" id="name" placeholder="Name">
+                                                <span asp-validation-for="FullName" class="text-danger"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label style="color: black;" class="label" for="email">Email Address</label>
-                                                <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                                                <input asp-for="Email" class="form-control" id="email" placeholder="Email">
+                                                <span asp-validation-for="Email" class="text-danger"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label style="color: black;" class="label" for="subject">Subject</label>
-                                                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+                                                <input asp-for="Subject" class="form-control" id="subject" placeholder="Subject">
+                                                <span asp-validation-for="Subject" class="text-danger"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label style="color: black;" class="label" for="#">Message</label>
-                                                <textarea name="message" class="form-control" id="message" cols="30" rows="4" placeholder="Message"></textarea>
+                                                <textarea asp-for="Message" class="form-control" id="message" cols="30" rows="4" placeholder="Message"></textarea>
+                                                <span asp-validation-for="Message" class="text-danger"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <input type="submit" value="Send Message" class="btn bbn btn-primary btnmesagge ">
+                                                <input type="submit" value="Send Message" class="btn bbn btn-primary btnmesagge">
                                             </div>
                                         </div>
                                     </div>
@@ -138,3 +138,4 @@
         </div>
     </div>
 </section>
+<partial name="_ValidationScriptsPartial" />

@@ -1,0 +1,43 @@
+﻿@model BlogDetailVM
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<section data-aos="fade-up" style="background-image: url(assets/images/about-backgroundrealfirst.jpg);" class="first-sec dealofday intro aos-init aos-animate">
+    <div data-aos="fade-right" class="divday">
+        <p class="p-intro">HOME<i class="bi bi-chevron-right"></i><span class="span-intro">BLOG</span></p>
+        <h4 class="h4-intro">BLOG</h4>
+    </div>
+</section>
+
+<section>
+
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-lg-8 blogsingle yeah12 ">
+                <img src="~/assets/images/@Model.BlogImages.FirstOrDefault(m => m.IsMain)?.Name" alt="">
+                <h2>@Model.Name</h2>
+                <p style="margin-top:-10px" class="p">@Model.Description</p>
+            </div>
+
+            <div class="col-lg-4 blogsingle rigth yeah123">
+                <h3 class="RecentBlog">Recent Blog</h3>
+                @foreach (var item in Model.Blogs.Take(2))
+                {
+                    <div class="catagoriyes-blog">
+                        <div style="display: flex;" class="catagoriyes-blog-image">
+                            <img class="catagoriyes-blog-image-img" src="~/assets/images/@item.BlogImages.FirstOrDefault(m => m.IsMain)?.Name" />
+                            <div class="catagoriyes-blog-image-item">
+                                <p>@item.Name</p>
+                            </div>
+                        </div>
+                        <div class="meta1">
+                            <div><a href="#"><span class="fa fa-calendar"></span>@item.CreatedAt.ToString("MMM. dd, yyyy")</a></div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

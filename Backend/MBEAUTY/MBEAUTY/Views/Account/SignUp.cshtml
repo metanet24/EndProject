@@ -1,4 +1,5 @@
-﻿
+﻿@model SignUpVM
+
 @{
     ViewData["Title"] = "SignUp";
 }
@@ -16,38 +17,41 @@
             <div class="form-heading">
                 <h2 class="form-tit">Create a New Account</h2>
                 <p class="form-tit2">Add Your Personal Details</p>
+                <div asp-validation-summary="ModelOnly" class="text-danger d-flex justify-content-center"></div>
             </div>
-            <form action>
+            <form method="post">
                 <div class="row">
                     <div class="col-12">
                         <div class="form-group">
-                            <input type="email" class="form-control-1" placeholder="First Name*" name="email">
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-group">
-                            <input type="email" class="form-control-1" placeholder="Last Name*" name="email">
+                            <input asp-for="FullName" class="form-control-1" placeholder="FullName*">
+                            <span asp-validation-for="FullName" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
                         <div class="form-group">
-                            <input type="email" class="form-control-1" placeholder="Email Address *" name="email">
+                            <input asp-for="Email" class="form-control-1" placeholder="Email Address *">
+                            <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="form-group">
-                            <input type="password" class="form-control-2" placeholder="Password *" name="password">
+                            <input asp-for="Password" class="form-control-2" placeholder="Password *">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input asp-for="ConfirmPassword" class="form-control-2" placeholder="Confirm Password *">
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn submit-btn register-btn">Register</button>
+                    <button class="btn submit-btn register-btn">Register</button>
                 </div>
             </form>
-
-
         </div>
 
         <div>
@@ -57,5 +61,4 @@
             </div>
         </div>
     </div>
-
 </section>

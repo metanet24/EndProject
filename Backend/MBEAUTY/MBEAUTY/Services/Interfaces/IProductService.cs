@@ -9,6 +9,6 @@ namespace MBEAUTY.Services.Interfaces
         void Delete(Product product);
         Task SaveAsync();
         Task<IEnumerable<ProductListVM>> GetAllAsync();
-        Task<Product> GetByIdAsync(int id);
+        Task<ProductDetailVM> GetByIdAsync(int id);
     }
 }

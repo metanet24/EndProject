@@ -39,9 +39,15 @@ namespace MBEAUTY.Services.Implementations
             return _mapper.Map<IEnumerable<BlogListVM>>(blogs);
         }
 
-        public Task<Blog> GetByIdAsync(int id)
+        public async Task<BlogDetailVM> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            Blog blog = await _context.Blogs
+                .Where(m => !m.SoftDeleted)
+                .Include(m => m.BlogImages)
+                .OrderByDescending(m => m.Id)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            return _mapper.Map<BlogDetailVM>(blog);
         }
 
         public Task SaveAsync()
