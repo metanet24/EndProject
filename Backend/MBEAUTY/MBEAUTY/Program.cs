@@ -49,6 +49,7 @@ builder.Services.AddScoped<IAdvertService, AdvertService>();
 builder.Services.AddScoped<IContactService, ContactService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IFileService, FileService>();
+builder.Services.AddScoped<IBasketService, BasketService>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 

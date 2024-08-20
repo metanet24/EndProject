@@ -4,6 +4,7 @@ using MBEAUTY.ViewModels.AboutVms;
 using MBEAUTY.ViewModels.AccountVMs;
 using MBEAUTY.ViewModels.AdvertVMs;
 using MBEAUTY.ViewModels.BannnerVMs;
+using MBEAUTY.ViewModels.BasketVMs;
 using MBEAUTY.ViewModels.BlogVMs;
 using MBEAUTY.ViewModels.BrandVMs;
 using MBEAUTY.ViewModels.CategoryVMs;
@@ -36,6 +37,9 @@ namespace MBEAUTY.Helpers
             CreateMap<ContactAddVM, Contact>();
 
             CreateMap<SignUpVM, AppUser>();
+
+            CreateMap<BasketAddVM, Basket>();
+            CreateMap<BasketProductAddVM, BasketProduct>();
 
             CreateMap<Blog, BlogListVM>();
             CreateMap<Blog, BlogDetailVM>();

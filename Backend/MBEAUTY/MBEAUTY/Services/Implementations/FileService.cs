@@ -6,7 +6,7 @@ namespace MBEAUTY.Services.Implementations
     {
         public string ReadFile(string path, string file)
         {
-            using (StreamReader reader = new(file)) { file = reader.ReadToEnd(); }
+            using (StreamReader reader = new(path)) { file = reader.ReadToEnd(); }
 
             return file;
         }

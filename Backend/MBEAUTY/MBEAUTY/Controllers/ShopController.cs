@@ -1,4 +1,5 @@
-﻿using MBEAUTY.Services.Interfaces;
+﻿using MBEAUTY.Helpers;
+using MBEAUTY.Services.Interfaces;
 using MBEAUTY.ViewModels;
 using MBEAUTY.ViewModels.ProductVMs;
 using Microsoft.AspNetCore.Mvc;
@@ -20,11 +21,28 @@ namespace MBEAUTY.Controllers
             _advertService = advertService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(ShopVM request)
         {
+            IEnumerable<ProductListVM> products = await _productService.GetAllAsync();
+            Paginate<ProductListVM> paginateProducts = null;
+
+            if (request.SearchText == null && request.CategoryId == null && request.BrandId == null)
+            {
+                products = products.Skip((request.Page * request.Take) - request.Take).Take(request.Take);
+                paginateProducts = new(products, request.Page,
+                    await _productService.GetPageCount(request.Take));
+            }
+            else
+            {
+                products = request.SearchText != null
+                    ? products.Where(m => m.Name.ToLower().Contains(request.SearchText.ToLower())).ToList()
+                    : products.Where(m => m.CategoryId == request.CategoryId || m.BrandId == request.BrandId);
+            }
+
             ShopVM model = new()
             {
-                Products = await _productService.GetAllAsync(),
+                PaginateProducts = paginateProducts,
+                Products = products,
                 Categories = await _categoryService.GetAllAsync(),
                 Brands = await _brandService.GetAllAsync(),
                 Advert = await _advertService.GetAsync()
@@ -39,6 +57,37 @@ namespace MBEAUTY.Controllers
             model.Products = await _productService.GetAllAsync();
 
             return View(model);
+        }
+
+        public async Task<IActionResult> Search(string searchText)
+        {
+            IEnumerable<ProductListVM> products = await _productService.GetAllAsync();
+
+            products = searchText != null
+                ? products.Where(m => m.Name.ToLower().Contains(searchText.ToLower()))
+                : products.Take(6);
+
+            ShopVM model = new() { Products = products };
+
+            return PartialView("_ProductFilterPartial", model);
+        }
+
+        public async Task<IActionResult> CategoryFilter(int id)
+        {
+            IEnumerable<ProductListVM> products = await _productService.GetAllAsync();
+
+            ShopVM model = new() { Products = products.Where(m => m.CategoryId == id) };
+
+            return PartialView("_ProductFilterPartial", model);
+        }
+
+        public async Task<IActionResult> BrandFilter(int id)
+        {
+            IEnumerable<ProductListVM> products = await _productService.GetAllAsync();
+
+            ShopVM model = new() { Products = products.Where(m => m.BrandId == id) };
+
+            return PartialView("_ProductFilterPartial", model);
         }
     }
 }

@@ -8,8 +8,16 @@
                 <a class="tel sosials" href="#"><i class="bi bi-telephone-fill foot-icon"></i><span class="mt">@Model.Settings["PhoneNumber"]</span></a>
             </div>
             <div class="sosial">
-                <a class="sosials" asp-action="SignIn" asp-controller="Account" class="p-2 pl-0"><span class="login">LOG IN</span></a>
-                <a class="sosials" asp-action="SignUp" asp-controller="Account" class="p-2 pl-0"><span class="login">SIGN UP</span></a>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a class="sosials p-2 pl-0"><span class="login">@User.Identity.Name</span></a>
+                    <a class="sosials p-2 pl-0" asp-action="SignOut" asp-controller="Account"><span class="login">SIGN OUT</span></a>
+                }
+                else
+                {
+                    <a class="sosials" asp-action="SignIn" asp-controller="Account" class="p-2 pl-0"><span class="login">LOG IN</span></a>
+                    <a class="sosials" asp-action="SignUp" asp-controller="Account" class="p-2 pl-0"><span class="login">SIGN UP</span></a>
+                }
                 <a class="sosials" href="#">@Html.Raw(Model.Settings["Twitter"])</a>
                 <a class="sosials" href="#">@Html.Raw(Model.Settings["Facebook"])</a>
                 <a class="sosials" href="#">@Html.Raw(Model.Settings["Linkedin"])</a>
@@ -33,6 +41,7 @@
                             <li class="basket">
                                 <a class="basket-nav" asp-action="Index" asp-controller="Basket">
                                     <span><i class="fas fa-shopping-basket basket "></i></span>
+                                    <sup class="product-count">@Model.BasketCount</sup>
                                 </a>
                             </li>
 
@@ -55,13 +64,12 @@
                         <li class="basket">
                             <a class="basket-nav" asp-action="Index" asp-controller="Basket">
                                 <span><i class="fas fa-shopping-basket basket "></i></span>
+                                <sup class="product-count">@Model.BasketCount</sup>
                             </a>
                         </li>
                     </ul>
                 </div>
             </nav>
-
         </div>
     </div>
-
 </header>

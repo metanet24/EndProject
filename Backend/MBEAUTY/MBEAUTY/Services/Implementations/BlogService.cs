@@ -50,6 +50,13 @@ namespace MBEAUTY.Services.Implementations
             return _mapper.Map<BlogDetailVM>(blog);
         }
 
+        public async Task<int> GetPageCount(int take)
+        {
+            IEnumerable<BlogListVM> blogs = await GetAllAsync();
+
+            return (int)Math.Ceiling((decimal)blogs.Count() / take);
+        }
+
         public Task SaveAsync()
         {
             throw new NotImplementedException();

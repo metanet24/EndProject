@@ -15,5 +15,6 @@ namespace MBEAUTY.Models
         public Brand Brand { get; set; }
         public AdditionalInfo AdditionalInfo { get; set; }
         public ICollection<ProductImage> ProductImages { get; set; }
+        public ICollection<BasketProduct> BasketProducts { get; set; }
     }
 }

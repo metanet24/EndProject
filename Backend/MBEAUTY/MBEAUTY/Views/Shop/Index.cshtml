@@ -21,9 +21,7 @@
                         <div class="search">
                             <h4>Search</h4>
                             <div class="search-product">
-                                <input type="search" name="" id="" placeholder="Search products"
-                                       class="search-product-input">
-                                <img src="./search-product-icon.png" alt="" class="search-product-icon">
+                                <input placeholder="search..." class="search-product-input">
                             </div>
                         </div>
                         <div class="categories">
@@ -31,7 +29,7 @@
                             <ul>
                                 @foreach (var item in Model.Categories)
                                 {
-                                    <li>@item.Name (@item.ProductCount)</li>
+                                    <li class="category-filter" category-id="@item.Id">@item.Name (@item.ProductCount)</li>
                                 }
                             </ul>
                         </div>
@@ -40,12 +38,10 @@
                             <ul>
                                 @foreach (var item in Model.Brands)
                                 {
-                                    <li>@item.Name</li>
+                                    <li class="brand-filter" brand-id="@item.Id">@item.Name</li>
                                 }
                             </ul>
                         </div>
-
-
                     </div>
 
                     <div class="banner-img img-full">
@@ -53,15 +49,19 @@
                     </div>
                 </div>
                 <div class="col-lg-9 products-side">
-                    <div class="row">
-                        @foreach (var item in Model.Products)
+                    <div class="row product-items">
+                        @{
+                            var products = Model.PaginateProducts?.Datas ?? Model.Products;
+                        }
+
+                        @foreach (var item in products)
                         {
-                            <div class="col-lg-4 col-md-6 pb-5">
-                                <div class="productt" id="1">
+                            <div class="col-lg-4 col-md-6 pb-5 product-item">
+                                <div class="productt">
                                     <div class="product-image"
                                          style="background-image: url(assets/images/@item.ProductImages.FirstOrDefault(m => m.IsMain)?.Name);">
                                         <div class="basket-wishlist-compare d-flex justify-content-center">
-                                            <div class="add-basket text-center">
+                                            <div class="add-basket text-center" product-id="@item.Id">
                                                 <i class="fas fa-shopping-basket"></i>
                                             </div>
                                         </div>
@@ -74,27 +74,37 @@
                             </div>
                         }
 
-                        <nav data-aos="fade-right" style="display: flex; justify-content: center; margin-bottom: 20px;" aria-label="Page navigation example">
-                            <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+                        @if (Model.PaginateProducts != null)
+                        {
+                            <nav class="paginate" data-aos="fade-right" style="display: flex; justify-content: center; margin-bottom: 20px;" aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    <li class="page-item @(!Model.PaginateProducts.Previous ? "disabled" : "")">
+                                        <a asp-route-page="@(Model.PaginateProducts.CurrentPage - 1)" class="page-link" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+
+                                    @for (int i = 1; i <= Model.PaginateProducts.TotalPage; i++)
+                                    {
+                                        <li class="page-item @(Model.PaginateProducts.CurrentPage != i ? "" : "disabled")"><a asp-route-page="@i" class="page-link">@i</a></li>
+                                    }
+
+                                    <li class="page-item @(Model.PaginateProducts.Next ? "" : "disabled")">
+                                        <a asp-route-page="@(Model.PaginateProducts.CurrentPage + 1)" class="page-link" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        }
                     </div>
                 </div>
             </div>
     </section>
     <!-- products section ends -->
-    </main>
 </section>
+
+@section Scripts {
+    <script src="~/js/shop.js"></script>
+    <script src="~/js/basket.js"></script>
+}

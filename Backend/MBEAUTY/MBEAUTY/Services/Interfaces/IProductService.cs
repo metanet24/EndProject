@@ -10,5 +10,6 @@ namespace MBEAUTY.Services.Interfaces
         Task SaveAsync();
         Task<IEnumerable<ProductListVM>> GetAllAsync();
         Task<ProductDetailVM> GetByIdAsync(int id);
+        Task<int> GetPageCount(int take);
     }
 }

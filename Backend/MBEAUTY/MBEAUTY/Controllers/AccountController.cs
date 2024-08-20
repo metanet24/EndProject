@@ -64,7 +64,7 @@ namespace MBEAUTY.Controllers
             body = body.Replace("{{link}}", link);
             body = body.Replace("{{fullname}}", newUser.FullName);
 
-            _emailService.Send(newUser.Email, "Verify email", body, null);
+            _emailService.Send(null, newUser.Email, body, "Verify email");
 
             return RedirectToAction(nameof(CheckEmail));
         }
@@ -100,6 +100,67 @@ namespace MBEAUTY.Controllers
             await _signInManager.SignInAsync(user, false);
 
             return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult ForgetPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ForgetPassword(ForgetPasswordVM request)
+        {
+            if (!ModelState.IsValid) return View(request);
+
+            AppUser existUser = await _userManager.FindByEmailAsync(request.Email);
+
+            if (existUser is null)
+            {
+                ModelState.AddModelError("Email", "User not found!");
+                return View(request);
+            }
+
+            string token = await _userManager.GeneratePasswordResetTokenAsync(existUser);
+
+            string link = Url.Action(nameof(ResetPassword), "Account", new { userId = existUser.Id, token }, Request.Scheme, Request.Host.ToString());
+
+            string body = string.Empty;
+
+            body = _fileService.ReadFile("wwwroot/templates/verify.html", body);
+
+            body = body.Replace("{{link}}", link);
+            body = body.Replace("{{fullname}}", existUser.FullName);
+
+            _emailService.Send(null, existUser.Email, body, "Reset password");
+
+            return RedirectToAction(nameof(CheckEmail));
+        }
+
+        public IActionResult ResetPassword(string userId, string token)
+        {
+            return View(new ResetPasswordVM { Token = token, UserId = userId });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword(ResetPasswordVM resetPassword)
+        {
+            if (!ModelState.IsValid) return View(resetPassword);
+
+            AppUser existUser = await _userManager.FindByIdAsync(resetPassword.UserId);
+
+            if (existUser == null) return NotFound();
+
+            if (await _userManager.CheckPasswordAsync(existUser, resetPassword.Password))
+            {
+                ModelState.AddModelError("", "This password already exist!");
+                return View(resetPassword);
+            }
+
+            await _userManager.ResetPasswordAsync(existUser, resetPassword.Token, resetPassword.Password);
+
+            return RedirectToAction(nameof(SignIn));
         }
 
         public async Task<IActionResult> SignOut()

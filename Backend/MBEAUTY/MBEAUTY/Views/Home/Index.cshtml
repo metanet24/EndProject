@@ -69,7 +69,6 @@
             @foreach (var item in Model.Products.Take(3))
             {
                 <div class="col-3">
-
                     <div class="product-card">
                         <div class="badge">@item.BrandName</div>
                         <div class="product-tumb">
@@ -77,18 +76,16 @@
                         </div>
                         <div class="product-details">
                             <span class="product-catagory">@item.CategoryName</span>
-                            <h4><a href="">@item.Name</a></h4>
+                            <h4><a asp-controller="Shop" asp-action="Detail" asp-route-id="@item.Id">@item.Name</a></h4>
                             <div class="product-bottom-details">
                                 <div class="product-price">$@item.Price.ToString("N2")</div>
-                                <div class="product-links">
-                                    <a href=""><i class="fa fa-shopping-cart"></i></a>
+                                <div class="product-links add-basket" style="cursor: pointer;" product-id="@item.Id">
+                                    <i class="fa fa-shopping-cart"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             }
         </div>
     </div>
@@ -174,3 +171,7 @@
 </section>
 
 @await Component.InvokeAsync("Service")
+
+@section Scripts {
+    <script src="~/js/basket.js"></script>
+}

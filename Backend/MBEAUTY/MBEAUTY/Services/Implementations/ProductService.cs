@@ -59,5 +59,12 @@ namespace MBEAUTY.Services.Implementations
 
             return _mapper.Map<ProductDetailVM>(product);
         }
+
+        public async Task<int> GetPageCount(int take)
+        {
+            IEnumerable<ProductListVM> products = await GetAllAsync();
+
+            return (int)Math.Ceiling((decimal)products.Count() / take);
+        }
     }
 }

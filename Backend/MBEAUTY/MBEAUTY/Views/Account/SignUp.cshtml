@@ -23,12 +23,18 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="form-group">
-                            <input asp-for="FullName" class="form-control-1" placeholder="FullName*">
+                            <input asp-for="FullName" class="form-control-1" placeholder="FullName *">
                             <span asp-validation-for="FullName" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input asp-for="UserName" class="form-control-1" placeholder="User name *">
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                    </div>
                     <div class="col-12">
                         <div class="form-group">
                             <input asp-for="Email" class="form-control-1" placeholder="Email Address *">
