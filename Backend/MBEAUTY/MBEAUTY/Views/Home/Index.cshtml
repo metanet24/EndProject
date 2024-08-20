@@ -29,7 +29,7 @@
                 <div class="product-card">
                     <div class="badge">@item.BrandName</div>
                     <div class="product-tumb">
-                        <img src="~/assets/images/@item.ProductImages.FirstOrDefault(m => m.IsMain)?.Name" alt="">
+                        <img src="~/assets/images/@item.Image" alt="">
                     </div>
                     <div class="product-details">
                         <span class="product-catagory">@item.CategoryName</span>
@@ -52,7 +52,7 @@
             <h2 class="find-h2">@Model.Products.FirstOrDefault().Description</h2>
             <a class="btn btn-dark explore" asp-action="Detail" asp-controller="Product" asp-route-id="@Model.Products.FirstOrDefault().Id"><span>Shop Now</span></a>
         </div>
-        <div data-aos="fade-up" class=""><img class="foto-find" src="~/assets/images/@Model.Products.FirstOrDefault().ProductImages.FirstOrDefault(m => m.IsMain)?.Name" alt=""></div>
+        <div data-aos="fade-up" class=""><img class="foto-find" src="~/assets/images/@Model.Products.FirstOrDefault()?.Image" alt=""></div>
     </div>
 </section>
 
@@ -72,7 +72,7 @@
                     <div class="product-card">
                         <div class="badge">@item.BrandName</div>
                         <div class="product-tumb">
-                            <img src="~/assets/images/@item.ProductImages.FirstOrDefault(m => m.IsMain)?.Name" alt="">
+                            <img src="~/assets/images/@item.Image" alt="">
                         </div>
                         <div class="product-details">
                             <span class="product-catagory">@item.CategoryName</span>

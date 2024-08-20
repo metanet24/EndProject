@@ -18,9 +18,14 @@ namespace MBEAUTY.Services.Implementations
             _mapper = mapper;
         }
 
-        public async Task AddAsync(Product product)
+        public async Task<int> AddAsync(ProductAddVM product)
         {
-            await _context.Products.AddAsync(product);
+            var newProduct = _mapper.Map<Product>(product);
+
+            await _context.Products.AddAsync(newProduct);
+            await _context.SaveChangesAsync();
+
+            return newProduct.Id;
         }
 
         public void Delete(Product product)

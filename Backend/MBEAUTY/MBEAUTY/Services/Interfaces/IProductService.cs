@@ -5,7 +5,7 @@ namespace MBEAUTY.Services.Interfaces
 {
     public interface IProductService
     {
-        Task AddAsync(Product product);
+        Task<int> AddAsync(ProductAddVM product);
         void Delete(Product product);
         Task SaveAsync();
         Task<IEnumerable<ProductListVM>> GetAllAsync();

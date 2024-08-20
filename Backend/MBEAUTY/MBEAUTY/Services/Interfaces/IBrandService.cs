@@ -1,5 +1,6 @@
 ﻿using MBEAUTY.Models;
 using MBEAUTY.ViewModels.BrandVMs;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MBEAUTY.Services.Interfaces
 {
@@ -9,6 +10,7 @@ namespace MBEAUTY.Services.Interfaces
         void Delete(Brand product);
         Task SaveAsync();
         Task<IEnumerable<BrandListVM>> GetAllAsync();
+        Task<SelectList> GetAllSelectAsync();
         Task<Product> GetByIdAsync(int id);
     }
 }

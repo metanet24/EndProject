@@ -3,6 +3,7 @@ using MBEAUTY.Data;
 using MBEAUTY.Models;
 using MBEAUTY.Services.Interfaces;
 using MBEAUTY.ViewModels.CategoryVMs;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace MBEAUTY.Services.Implementations
@@ -34,6 +35,11 @@ namespace MBEAUTY.Services.Implementations
                 .Include(m => m.Products).OrderByDescending(m => m.Id).ToListAsync();
 
             return _mapper.Map<IEnumerable<CategoryListVM>>(categories);
+        }
+
+        public async Task<SelectList> GetAllSelectAsync()
+        {
+            return new SelectList(await GetAllAsync(), "Id", "Name");
         }
 
         public Task<Category> GetByIdAsync(int id)

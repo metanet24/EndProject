@@ -1,10 +1,9 @@
-﻿using MBEAUTY.Models;
-
-namespace MBEAUTY.ViewModels.ProductVMs
+﻿namespace MBEAUTY.ViewModels.ProductVMs
 {
     public class ProductListVM
     {
         public int Id { get; set; }
+        public string Image { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
@@ -13,6 +12,5 @@ namespace MBEAUTY.ViewModels.ProductVMs
         public string BrandName { get; set; }
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
-        public IEnumerable<ProductImage> ProductImages { get; set; }
     }
 }

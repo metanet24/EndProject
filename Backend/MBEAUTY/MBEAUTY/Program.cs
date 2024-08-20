@@ -38,6 +38,7 @@ builder.Services.Configure<IdentityOptions>(option =>
 builder.Services.AddScoped<ISettingService, SettingService>();
 builder.Services.AddScoped<ISliderService, SliderService>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProductImageService, ProductImageService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddScoped<IBannerService, BannerService>();
@@ -50,6 +51,7 @@ builder.Services.AddScoped<IContactService, ContactService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IFileService, FileService>();
 builder.Services.AddScoped<IBasketService, BasketService>();
+builder.Services.AddScoped<IAdditionalInfoService, AdditionalInfoService>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 

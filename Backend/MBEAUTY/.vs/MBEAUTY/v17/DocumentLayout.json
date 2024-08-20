@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|c:\\users\\emila\\onedrive\\desktop\\works\\code academy\\templates\\final project\\endproject\\backend\\mbeauty\\mbeauty\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|solutionrelative:mbeauty\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|c:\\users\\emila\\onedrive\\desktop\\works\\code academy\\templates\\final project\\endproject\\backend\\mbeauty\\mbeauty\\areas\\admin\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|solutionrelative:mbeauty\\areas\\admin\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|c:\\users\\emila\\onedrive\\desktop\\works\\code academy\\templates\\final project\\endproject\\backend\\mbeauty\\mbeauty\\controllers\\shopcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|solutionrelative:mbeauty\\controllers\\shopcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|c:\\users\\emila\\onedrive\\desktop\\works\\code academy\\templates\\final project\\endproject\\backend\\mbeauty\\mbeauty\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|solutionrelative:mbeauty\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|c:\\users\\emila\\onedrive\\desktop\\works\\code academy\\templates\\final project\\endproject\\backend\\mbeauty\\mbeauty\\areas\\admin\\views\\product\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|solutionrelative:mbeauty\\areas\\admin\\views\\product\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -35,40 +31,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ShopController.cs",
-              "DocumentMoniker": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Controllers\\ShopController.cs",
-              "RelativeDocumentMoniker": "MBEAUTY\\Controllers\\ShopController.cs",
-              "ToolTip": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Controllers\\ShopController.cs",
-              "RelativeToolTip": "MBEAUTY\\Controllers\\ShopController.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAgwDgAAAA+AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T15:45:56.06Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "MBEAUTY\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "MBEAUTY\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAACIAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Areas\\Admin\\Views\\Product\\Create.cshtml",
+              "RelativeDocumentMoniker": "MBEAUTY\\Areas\\Admin\\Views\\Product\\Create.cshtml",
+              "ToolTip": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Areas\\Admin\\Views\\Product\\Create.cshtml",
+              "RelativeToolTip": "MBEAUTY\\Areas\\Admin\\Views\\Product\\Create.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-20T15:41:01.643Z",
+              "WhenOpened": "2024-08-20T17:03:59.336Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "MBEAUTY\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Views\\Home\\Index.cshtml*",
-              "RelativeToolTip": "MBEAUTY\\Views\\Home\\Index.cshtml*",
-              "ViewState": "AQIAAEUAAAAAAAAAAAAowFEAAABzAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-20T15:40:38.716Z",
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Areas\\Admin\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "MBEAUTY\\Areas\\Admin\\Controllers\\ProductController.cs",
+              "ToolTip": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Areas\\Admin\\Controllers\\ProductController.cs*",
+              "RelativeToolTip": "MBEAUTY\\Areas\\Admin\\Controllers\\ProductController.cs*",
+              "ViewState": "AQIAAEMAAAAAAAAAAAAYwFEAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-20T15:58:28.072Z",
               "EditorCaption": ""
             }
           ]
