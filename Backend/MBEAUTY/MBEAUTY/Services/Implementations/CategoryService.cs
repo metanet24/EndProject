@@ -34,6 +34,8 @@ namespace MBEAUTY.Services.Implementations
 
         public async Task DeleteAsync(Category category)
         {
+            foreach (var product in category.Products) if (product.CategoryId == category.Id) product.CategoryId = null;
+
             _context.Categories.Remove(category);
             await _context.SaveChangesAsync();
         }
@@ -51,7 +53,8 @@ namespace MBEAUTY.Services.Implementations
 
         public async Task<Category> GetByIdAsync(int id)
         {
-            return await _context.Categories.Where(m => !m.SoftDeleted).FirstOrDefaultAsync(m => m.Id == id);
+            return await _context.Categories
+                .Include(m => m.Products).Where(m => !m.SoftDeleted).FirstOrDefaultAsync(m => m.Id == id);
         }
 
         public async Task<int> GetPageCount(int take)

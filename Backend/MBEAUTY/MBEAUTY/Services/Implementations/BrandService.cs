@@ -61,6 +61,8 @@ namespace MBEAUTY.Services.Implementations
 
         public async Task DeleteAsync(Brand item)
         {
+            foreach (var product in item.Products) if (product.BrandId == item.Id) product.BrandId = null;
+
             string oldPath = FileExtension.GetFilePath(_environment.WebRootPath, "assets/images", item.Logo);
 
             FileExtension.DeleteFile(oldPath);
@@ -82,7 +84,8 @@ namespace MBEAUTY.Services.Implementations
 
         public async Task<Brand> GetByIdAsync(int id)
         {
-            return await _context.Brands.Where(m => !m.SoftDeleted).FirstOrDefaultAsync(m => m.Id == id);
+            return await _context.Brands
+                .Include(m => m.Products).Where(m => !m.SoftDeleted).FirstOrDefaultAsync(m => m.Id == id);
         }
 
         public async Task<int> GetPageCount(int take)

@@ -72,8 +72,14 @@
         var url = window.location.href;
         var parts = url.split('/');
         var adminIndex = parts.indexOf("Admin");
+
         if (adminIndex !== -1 && parts.length > adminIndex + 1) {
-            return parts[adminIndex + 1];
+            var actionPart = parts[adminIndex + 1];
+            var questionMarkIndex = actionPart.indexOf('?');
+            if (questionMarkIndex !== -1) {
+                actionPart = actionPart.substring(0, questionMarkIndex);
+            }
+            return actionPart;
         }
         return null;
     }
