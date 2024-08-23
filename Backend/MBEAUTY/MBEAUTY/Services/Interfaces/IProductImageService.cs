@@ -1,5 +1,4 @@
 ﻿using MBEAUTY.Models;
-using MBEAUTY.ViewModels.ProductImageVMs;
 
 namespace MBEAUTY.Services.Interfaces
 {
@@ -9,7 +8,6 @@ namespace MBEAUTY.Services.Interfaces
         Task<ICollection<ProductImage>> AddAsync(int productId, IFormFile[] photos);
         Task<ProductImage> GetByIdAsync(int id);
         Task UpdateType(int id);
-        Task UpdateAsync(ProductImageEditVM productImage);
         Task DeleteAsync(ProductImage productImage);
     }
 }

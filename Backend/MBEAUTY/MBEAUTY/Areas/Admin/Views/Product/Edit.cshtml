@@ -12,7 +12,7 @@
             <div class="images" style="display: flex; gap: 30px;">
                 @foreach (var item in Model.ProductImages)
                 {
-                    <div class="image @(item.IsMain ? "border border-5" : "")">
+                    <div class="image" style="border: @(item.IsMain ? "3px solid red" : "none")">
                         <img src="~/assets/images/@item.Name" style="object-fit: cover; width: 200px; display: block;" />
                         <div class="d-flex justify-content-around">
                             <a class="btn btn-danger delete-img" id="@item.Id">Delete</a>
@@ -22,7 +22,7 @@
                 }
             </div>
             <form class="mt-5" method="post" enctype="multipart/form-data">
-                <input asp-for="@Model.ProductImages" type="hidden" />
+                <input asp-for="ProductImages" type="hidden" />
                 <div class="form-group">
                     <label>File upload</label>
                     <input asp-for="Photos" class="file-upload-default">

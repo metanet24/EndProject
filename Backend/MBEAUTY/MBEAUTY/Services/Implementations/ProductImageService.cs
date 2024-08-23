@@ -62,12 +62,6 @@ namespace MBEAUTY.Services.Implementations
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(ProductImageEditVM productImage)
-        {
-            _context.ProductImages.Update(_mapper.Map<ProductImage>(productImage));
-            await _context.SaveChangesAsync();
-        }
-
         public async Task<ProductImage> GetByIdAsync(int id)
         {
             return await _context.ProductImages.Include(m => m.Product)

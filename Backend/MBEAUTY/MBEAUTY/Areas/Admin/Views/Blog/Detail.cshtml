@@ -1,0 +1,45 @@
+﻿@model BlogDetailVM
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Product Detail</h4>
+            <div class="images">
+                @foreach (var item in Model.BlogImages)
+                {
+                    <img src="~/assets/images/@item.Name" style="object-fit: cover; width: 200px;" />
+                }
+            </div>
+            <form class="form-sample mt-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Name</label>
+                            <div class="col-sm-9">
+                                <input disabled class="form-control" value="@Model.Name" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Description</label>
+                            <div class="col-sm-9">
+                                <textarea asp-for="Description" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <a asp-action="Index" class="btn btn-danger" style="float: right;">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

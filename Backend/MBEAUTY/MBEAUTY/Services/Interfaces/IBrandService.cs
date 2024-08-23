@@ -6,11 +6,11 @@ namespace MBEAUTY.Services.Interfaces
 {
     public interface IBrandService
     {
-        Task AddAsync(Brand product);
-        void Delete(Brand product);
-        Task SaveAsync();
-        Task<IEnumerable<BrandListVM>> GetAllAsync();
+        Task AddAsync(BrandAddVM item);
+        Task Delete(Brand item);
+        Task<IEnumerable<Brand>> GetAllAsync();
         Task<SelectList> GetAllSelectAsync();
-        Task<Product> GetByIdAsync(int id);
+        Task<Brand> GetByIdAsync(int id);
+        Task<int> GetPageCount(int take);
     }
 }

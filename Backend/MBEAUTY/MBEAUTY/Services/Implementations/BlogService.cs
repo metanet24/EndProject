@@ -18,48 +18,53 @@ namespace MBEAUTY.Services.Implementations
             _mapper = mapper;
         }
 
-        public Task AddAsync(Blog blog)
+        public async Task<int> AddAsync(BlogAddVM item)
         {
-            throw new NotImplementedException();
+            var newItem = _mapper.Map<Blog>(item);
+
+            await _context.Blogs.AddAsync(newItem);
+            await _context.SaveChangesAsync();
+
+            return newItem.Id;
         }
 
-        public void Delete(Blog blog)
+        public async Task UpdateAsync(BlogEditVM item)
         {
-            throw new NotImplementedException();
+            var existItem = await GetByIdAsync(item.Id);
+
+            _context.Blogs.Update(_mapper.Map(item, existItem));
+            await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<BlogListVM>> GetAllAsync()
+        public async Task Delete(Blog blog)
         {
-            IEnumerable<Blog> blogs = await _context.Blogs
+            _context.Blogs.Remove(blog);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Blog>> GetAllAsync()
+        {
+            return await _context.Blogs
                 .Where(m => !m.SoftDeleted)
                 .Include(m => m.BlogImages)
                 .OrderByDescending(m => m.Id)
                 .ToListAsync();
-
-            return _mapper.Map<IEnumerable<BlogListVM>>(blogs);
         }
 
-        public async Task<BlogDetailVM> GetByIdAsync(int id)
+        public async Task<Blog> GetByIdAsync(int id)
         {
-            Blog blog = await _context.Blogs
+            return await _context.Blogs
                 .Where(m => !m.SoftDeleted)
                 .Include(m => m.BlogImages)
                 .OrderByDescending(m => m.Id)
                 .FirstOrDefaultAsync(m => m.Id == id);
-
-            return _mapper.Map<BlogDetailVM>(blog);
         }
 
         public async Task<int> GetPageCount(int take)
         {
-            IEnumerable<BlogListVM> blogs = await GetAllAsync();
+            IEnumerable<Blog> blogs = await GetAllAsync();
 
             return (int)Math.Ceiling((decimal)blogs.Count() / take);
-        }
-
-        public Task SaveAsync()
-        {
-            throw new NotImplementedException();
         }
     }
 }

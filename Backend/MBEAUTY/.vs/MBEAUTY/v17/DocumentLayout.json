@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|c:\\users\\emila\\onedrive\\desktop\\works\\code academy\\templates\\final project\\endproject\\backend\\mbeauty\\mbeauty\\areas\\admin\\controllers\\blogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|solutionrelative:mbeauty\\areas\\admin\\controllers\\blogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|c:\\users\\emila\\onedrive\\desktop\\works\\code academy\\templates\\final project\\endproject\\backend\\mbeauty\\mbeauty\\areas\\admin\\views\\brand\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|solutionrelative:mbeauty\\areas\\admin\\views\\brand\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|c:\\users\\emila\\onedrive\\desktop\\works\\code academy\\templates\\final project\\endproject\\backend\\mbeauty\\mbeauty\\areas\\admin\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|solutionrelative:mbeauty\\areas\\admin\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|c:\\users\\emila\\onedrive\\desktop\\works\\code academy\\templates\\final project\\endproject\\backend\\mbeauty\\mbeauty\\areas\\admin\\controllers\\brandcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|solutionrelative:mbeauty\\areas\\admin\\controllers\\brandcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|c:\\users\\emila\\onedrive\\desktop\\works\\code academy\\templates\\final project\\endproject\\backend\\mbeauty\\mbeauty\\controllers\\blogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B646C80-0E14-4169-A4F7-8C802723ED11}|MBEAUTY\\MBEAUTY.csproj|solutionrelative:mbeauty\\controllers\\blogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,6 +26,10 @@
           "Children": [
             {
               "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
@@ -30,28 +38,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Areas\\Admin\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "MBEAUTY\\Areas\\Admin\\Controllers\\ProductController.cs",
-              "ToolTip": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Areas\\Admin\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "MBEAUTY\\Areas\\Admin\\Controllers\\ProductController.cs",
-              "ViewState": "AQIAACIAAAAAAAAAAAAowCwAAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T16:20:29.347Z",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Areas\\Admin\\Views\\Brand\\Index.cshtml",
+              "RelativeDocumentMoniker": "MBEAUTY\\Areas\\Admin\\Views\\Brand\\Index.cshtml",
+              "ToolTip": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Areas\\Admin\\Views\\Brand\\Index.cshtml",
+              "RelativeToolTip": "MBEAUTY\\Areas\\Admin\\Views\\Brand\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-23T08:07:41.331Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "BlogController.cs",
-              "DocumentMoniker": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Areas\\Admin\\Controllers\\BlogController.cs",
-              "RelativeDocumentMoniker": "MBEAUTY\\Areas\\Admin\\Controllers\\BlogController.cs",
-              "ToolTip": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Areas\\Admin\\Controllers\\BlogController.cs",
-              "RelativeToolTip": "MBEAUTY\\Areas\\Admin\\Controllers\\BlogController.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAQwB8AAAAaAAAA",
+              "DocumentMoniker": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Controllers\\BlogController.cs",
+              "RelativeDocumentMoniker": "MBEAUTY\\Controllers\\BlogController.cs",
+              "ToolTip": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Controllers\\BlogController.cs",
+              "RelativeToolTip": "MBEAUTY\\Controllers\\BlogController.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAzwBMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T16:20:06.72Z",
+              "WhenOpened": "2024-08-23T08:05:26.577Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BrandController.cs",
+              "DocumentMoniker": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Areas\\Admin\\Controllers\\BrandController.cs",
+              "RelativeDocumentMoniker": "MBEAUTY\\Areas\\Admin\\Controllers\\BrandController.cs",
+              "ToolTip": "C:\\Users\\emila\\OneDrive\\Desktop\\Works\\Code Academy\\Templates\\Final project\\EndProject\\Backend\\MBEAUTY\\MBEAUTY\\Areas\\Admin\\Controllers\\BrandController.cs",
+              "RelativeToolTip": "MBEAUTY\\Areas\\Admin\\Controllers\\BrandController.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAIwBYAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-23T07:48:54.772Z",
               "EditorCaption": ""
             }
           ]

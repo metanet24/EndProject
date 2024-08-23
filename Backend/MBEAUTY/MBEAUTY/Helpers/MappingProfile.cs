@@ -6,6 +6,7 @@ using MBEAUTY.ViewModels.AdditionalInfoVMs;
 using MBEAUTY.ViewModels.AdvertVMs;
 using MBEAUTY.ViewModels.BannnerVMs;
 using MBEAUTY.ViewModels.BasketVMs;
+using MBEAUTY.ViewModels.BlogImageVMs;
 using MBEAUTY.ViewModels.BlogVMs;
 using MBEAUTY.ViewModels.BrandVMs;
 using MBEAUTY.ViewModels.CategoryVMs;
@@ -33,6 +34,9 @@ namespace MBEAUTY.Helpers
             CreateMap<Famous, FamousListVM>();
 
             CreateMap<Brand, BrandListVM>();
+            CreateMap<BrandAddVM, Brand>();
+            CreateMap<Brand, BrandEditVM>();
+            CreateMap<BrandEditVM, Brand>();
 
             CreateMap<Advert, AdvertVM>();
 
@@ -48,6 +52,12 @@ namespace MBEAUTY.Helpers
                 opt => opt.MapFrom(src => src.BlogImages.FirstOrDefault(m => m.IsMain).Name));
 
             CreateMap<Blog, BlogDetailVM>();
+            CreateMap<BlogAddVM, Blog>();
+            CreateMap<Blog, BlogEditVM>();
+            CreateMap<BlogEditVM, Blog>()
+                .ForMember(dest => dest.BlogImages, opt => opt.Ignore());
+
+            CreateMap<BlogImageAddVM, BlogImage>();
 
             CreateMap<ProductImageAddVM, ProductImage>();
             CreateMap<ProductImage, ProductImageDetailVM>();

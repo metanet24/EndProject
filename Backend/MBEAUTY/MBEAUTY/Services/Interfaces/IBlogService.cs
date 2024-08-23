@@ -5,11 +5,11 @@ namespace MBEAUTY.Services.Interfaces
 {
     public interface IBlogService
     {
-        Task AddAsync(Blog blog);
-        void Delete(Blog blog);
-        Task<IEnumerable<BlogListVM>> GetAllAsync();
-        Task<BlogDetailVM> GetByIdAsync(int id);
+        Task<int> AddAsync(BlogAddVM blog);
+        Task UpdateAsync(BlogEditVM blog);
+        Task Delete(Blog blog);
+        Task<IEnumerable<Blog>> GetAllAsync();
+        Task<Blog> GetByIdAsync(int id);
         Task<int> GetPageCount(int take);
-        Task SaveAsync();
     }
 }

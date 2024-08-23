@@ -33,7 +33,8 @@ namespace MBEAUTY.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index(int page = 1, int take = 6)
         {
-            IEnumerable<ProductListVM> products = await _productService.GetAllAsync();
+            IEnumerable<ProductListVM> products = _mapper.Map<IEnumerable<ProductListVM>>(
+                await _productService.GetAllAsync());
 
             int pageCount = await _productService.GetPageCount(take);
 
@@ -58,7 +59,7 @@ namespace MBEAUTY.Areas.Admin.Controllers
 
             if (!ModelState.IsValid) return View(request);
 
-            IEnumerable<ProductListVM> products = await _productService.GetAllAsync();
+            IEnumerable<Product> products = await _productService.GetAllAsync();
 
             if (products.Any(m => m.Name == request.Name))
             {
@@ -123,9 +124,10 @@ namespace MBEAUTY.Areas.Admin.Controllers
             ViewBag.Brands = await _brandService.GetAllSelectAsync();
             ViewBag.Categories = await _categoryService.GetAllSelectAsync();
 
-            if (!ModelState.IsValid) return View(request);
-
             Product existItem = await _productService.GetByIdAsync(id);
+
+            if (!ModelState.IsValid) return View(_mapper.Map<ProductEditVM>(existItem));
+
 
             ICollection<ProductImage> productImages = null;
 

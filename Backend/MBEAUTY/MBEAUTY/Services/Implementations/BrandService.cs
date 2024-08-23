@@ -19,22 +19,26 @@ namespace MBEAUTY.Services.Implementations
             _mapper = mapper;
         }
 
-        public Task AddAsync(Brand product)
+        public async Task AddAsync(BrandAddVM item)
         {
-            throw new NotImplementedException();
+            var newItem = _mapper.Map<Brand>(item);
+
+            await _context.Brands.AddAsync(newItem);
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(Brand product)
+        public async Task Delete(Brand item)
         {
-            throw new NotImplementedException();
+            var existItem = await GetByIdAsync(item.Id);
+
+            _context.Brands.Update(_mapper.Map(item, existItem));
+            await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<BrandListVM>> GetAllAsync()
+        public async Task<IEnumerable<Brand>> GetAllAsync()
         {
-            IEnumerable<Brand> brands = await _context.Brands.Where(m => !m.SoftDeleted)
+            return await _context.Brands.Where(m => !m.SoftDeleted)
                 .Include(m => m.Products).OrderByDescending(m => m.Id).ToListAsync();
-
-            return _mapper.Map<IEnumerable<BrandListVM>>(brands);
         }
 
         public async Task<SelectList> GetAllSelectAsync()
@@ -42,14 +46,16 @@ namespace MBEAUTY.Services.Implementations
             return new SelectList(await GetAllAsync(), "Id", "Name");
         }
 
-        public Task<Product> GetByIdAsync(int id)
+        public async Task<Brand> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Brands.Where(m => !m.SoftDeleted).FirstOrDefaultAsync(m => m.Id == id);
         }
 
-        public Task SaveAsync()
+        public async Task<int> GetPageCount(int take)
         {
-            throw new NotImplementedException();
+            IEnumerable<Brand> brands = await GetAllAsync();
+
+            return (int)Math.Ceiling((decimal)brands.Count() / take);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace MBEAUTY.Services.Interfaces
         Task<int> AddAsync(ProductAddVM product);
         Task UpdateAsync(ProductEditVM product);
         Task Delete(Product product);
-        Task<IEnumerable<ProductListVM>> GetAllAsync();
+        Task<IEnumerable<Product>> GetAllAsync();
         Task<Product> GetByIdAsync(int id);
         Task<int> GetPageCount(int take);
     }

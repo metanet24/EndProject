@@ -42,17 +42,15 @@ namespace MBEAUTY.Services.Implementations
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<ProductListVM>> GetAllAsync()
+        public async Task<IEnumerable<Product>> GetAllAsync()
         {
-            IEnumerable<Product> products = await _context.Products
+            return await _context.Products
                 .Where(m => !m.SoftDeleted)
                 .Include(m => m.ProductImages)
                 .Include(m => m.Category)
                 .Include(m => m.Brand)
                 .OrderByDescending(m => m.Id)
                 .ToListAsync();
-
-            return _mapper.Map<IEnumerable<ProductListVM>>(products);
         }
 
         public async Task<Product> GetByIdAsync(int id)
@@ -69,7 +67,7 @@ namespace MBEAUTY.Services.Implementations
 
         public async Task<int> GetPageCount(int take)
         {
-            IEnumerable<ProductListVM> products = await GetAllAsync();
+            IEnumerable<Product> products = await GetAllAsync();
 
             return (int)Math.Ceiling((decimal)products.Count() / take);
         }

@@ -8,10 +8,10 @@
 
         $.ajax({
             type: "Post",
-            url: `/Admin/Product/DeleteImage?id=${id}`,
+            url: `/Admin/${getAction()}/DeleteImage?id=${id}`,
             success: function (res) {
                 if (res) {
-                    btn.parentNode.parentNode.remove();
+                    btn.closest(".image").remove();
                 } else {
                     Swal.fire({
                         title: "Must have at least one image and one main image!",
@@ -31,13 +31,13 @@
 
         $.ajax({
             type: "Post",
-            url: `/Admin/Product/EditImageType?id=${id}`,
+            url: `/Admin/${getAction()}/EditImageType?id=${id}`,
             success: function (res) {
                 $(".image").each((index, img) => {
-                    $(img).removeClass("border border-5");
+                    $(img).css({'border': 'none'});
                 });
 
-                btn.closest(".image").addClass("border border-5");
+                btn.closest(".image").css({ 'border': '3px solid red' });
             }
         });
     });
@@ -59,7 +59,7 @@
 
                 $.ajax({
                     type: "Post",
-                    url: `/Admin/${action()}/Delete?id=${id}`,
+                    url: `/Admin/${getAction()}/Delete?id=${id}`,
                     success: () => {
                         btn.closest("tr").remove();
                     }
@@ -68,12 +68,13 @@
         });
     });
 
-    function action() {
-        const url = window.location.href;
-        const pathname = new URL(url).pathname;
-        const parts = pathname.split('/');
-        const actionName = parts[parts.length - 1];
-
-        return actionName;
+    function getAction() {
+        var url = window.location.href;
+        var parts = url.split('/');
+        var adminIndex = parts.indexOf("Admin");
+        if (adminIndex !== -1 && parts.length > adminIndex + 1) {
+            return parts[adminIndex + 1];
+        }
+        return null;
     }
 })(jQuery);
