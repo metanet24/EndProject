@@ -1,4 +1,5 @@
-﻿using MBEAUTY.Helpers;
+﻿using AutoMapper;
+using MBEAUTY.Helpers;
 using MBEAUTY.Services.Interfaces;
 using MBEAUTY.ViewModels;
 using MBEAUTY.ViewModels.ProductVMs;
@@ -12,13 +13,15 @@ namespace MBEAUTY.Controllers
         private readonly IBrandService _brandService;
         private readonly ICategoryService _categoryService;
         private readonly IAdvertService _advertService;
+        private readonly IMapper _mapper;
 
-        public ShopController(IProductService productService, IBrandService brandService, ICategoryService categoryService, IAdvertService advertService)
+        public ShopController(IProductService productService, IBrandService brandService, ICategoryService categoryService, IAdvertService advertService, IMapper mapper)
         {
             _productService = productService;
             _brandService = brandService;
             _categoryService = categoryService;
             _advertService = advertService;
+            _mapper = mapper;
         }
 
         public async Task<IActionResult> Index(ShopVM request)
@@ -53,7 +56,7 @@ namespace MBEAUTY.Controllers
 
         public async Task<IActionResult> Detail(int id)
         {
-            ProductDetailVM model = await _productService.GetByIdAsync(id);
+            ProductDetailVM model = _mapper.Map<ProductDetailVM>(await _productService.GetByIdAsync(id));
             model.Products = await _productService.GetAllAsync();
 
             return View(model);

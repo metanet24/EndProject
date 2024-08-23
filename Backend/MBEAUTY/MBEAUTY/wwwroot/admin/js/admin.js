@@ -11,7 +11,7 @@
             url: `/Admin/Product/DeleteImage?id=${id}`,
             success: function (res) {
                 if (res) {
-                    btn.closest(".image").remove();
+                    btn.parentNode.parentNode.remove();
                 } else {
                     Swal.fire({
                         title: "Must have at least one image and one main image!",
@@ -54,12 +54,6 @@
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire({
-                    title: "Deleted!",
-                    text: "Your product has been deleted.",
-                    icon: "success"
-                });
-
                 const btn = $(this);
                 const id = btn.attr('id');
 

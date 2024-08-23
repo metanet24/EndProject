@@ -28,13 +28,17 @@ namespace MBEAUTY.Services.Implementations
             return newProduct.Id;
         }
 
-        public void Delete(Product product)
+        public async Task UpdateAsync(ProductEditVM product)
         {
-            _context.Products.Remove(product);
+            var existItem = await GetByIdAsync(product.Id);
+
+            _context.Products.Update(_mapper.Map(product, existItem));
+            await _context.SaveChangesAsync();
         }
 
-        public async Task SaveAsync()
+        public async Task Delete(Product product)
         {
+            _context.Products.Remove(product);
             await _context.SaveChangesAsync();
         }
 
@@ -51,9 +55,9 @@ namespace MBEAUTY.Services.Implementations
             return _mapper.Map<IEnumerable<ProductListVM>>(products);
         }
 
-        public async Task<ProductDetailVM> GetByIdAsync(int id)
+        public async Task<Product> GetByIdAsync(int id)
         {
-            Product product = await _context.Products
+            return await _context.Products
                 .Where(m => !m.SoftDeleted)
                 .Include(m => m.ProductImages)
                 .Include(m => m.Category)
@@ -61,8 +65,6 @@ namespace MBEAUTY.Services.Implementations
                 .Include(m => m.AdditionalInfo)
                 .OrderByDescending(m => m.Id)
                 .FirstOrDefaultAsync(m => m.Id == id);
-
-            return _mapper.Map<ProductDetailVM>(product);
         }
 
         public async Task<int> GetPageCount(int take)

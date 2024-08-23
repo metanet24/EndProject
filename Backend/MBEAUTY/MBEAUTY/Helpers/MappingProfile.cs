@@ -43,17 +43,31 @@ namespace MBEAUTY.Helpers
             CreateMap<BasketAddVM, Basket>();
             CreateMap<BasketProductAddVM, BasketProduct>();
 
-            CreateMap<Blog, BlogListVM>();
+            CreateMap<Blog, BlogListVM>()
+                .ForMember(dest => dest.Image,
+                opt => opt.MapFrom(src => src.BlogImages.FirstOrDefault(m => m.IsMain).Name));
+
             CreateMap<Blog, BlogDetailVM>();
 
-            CreateMap<ProductAddVM, Product>();
-
             CreateMap<ProductImageAddVM, ProductImage>();
+            CreateMap<ProductImage, ProductImageDetailVM>();
+            CreateMap<ProductImageDetailVM, ProductImage>();
 
+            CreateMap<AdditionalInfo, AdditionalInfoDetailVM>();
             CreateMap<AdditionalInfoAddVM, AdditionalInfo>();
+            CreateMap<AdditionalInfoDetailVM, AdditionalInfoEditVM>();
+            CreateMap<AdditionalInfoEditVM, AdditionalInfo>();
 
             CreateMap<Category, CategoryListVM>()
                 .ForMember(dest => dest.ProductCount, opt => opt.MapFrom(src => src.Products.Count()));
+
+            CreateMap<ProductAddVM, Product>();
+            CreateMap<ProductEditVM, Product>()
+                 .ForMember(dest => dest.ProductImages, opt => opt.Ignore());
+
+            CreateMap<Product, ProductEditVM>()
+                .ForMember(dest => dest.SkinType, opt => opt.MapFrom(src => src.AdditionalInfo.SkinType))
+                .ForMember(dest => dest.Shades, opt => opt.MapFrom(src => src.AdditionalInfo.Shades));
 
             CreateMap<Product, ProductListVM>()
                 .ForMember(dest => dest.Image,

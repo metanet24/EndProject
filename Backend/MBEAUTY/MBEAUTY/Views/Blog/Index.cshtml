@@ -24,7 +24,7 @@
         @foreach (var item in Model.Datas)
         {
             <div @(item == Model.Datas.Last() ? "data-aos='fade-up'" : "") class="p-category-div lastnew-div">
-                <div><img class="last-new-img" style="width: 400px;" src="~/assets/images/@item.BlogImages.FirstOrDefault(m => m.IsMain)?.Name" alt=""></div>
+                <div><img class="last-new-img" style="width: 400px;" src="~/assets/images/@item.Image" alt=""></div>
                 <div class="info-last">
                     <div class="post-date">@item.CreatedAt.ToString("yyyy MMMM dd")</div>
                     <h4><a class="blog-tit" asp-action="Detail" asp-route-id="@item.Id">@item.Name</a></h4>

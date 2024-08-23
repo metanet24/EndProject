@@ -1,0 +1,132 @@
+﻿@model ProductEditVM
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Product Edit</h4>
+            <div class="images" style="display: flex; gap: 30px;">
+                @foreach (var item in Model.ProductImages)
+                {
+                    <div class="image @(item.IsMain ? "border border-5" : "")">
+                        <img src="~/assets/images/@item.Name" style="object-fit: cover; width: 200px; display: block;" />
+                        <div class="d-flex justify-content-around">
+                            <a class="btn btn-danger delete-img" id="@item.Id">Delete</a>
+                            <a class="btn btn-primary main-img" id="@item.Id">Main</a>
+                        </div>
+                    </div>
+                }
+            </div>
+            <form class="mt-5" method="post" enctype="multipart/form-data">
+                <input asp-for="@Model.ProductImages" type="hidden" />
+                <div class="form-group">
+                    <label>File upload</label>
+                    <input asp-for="Photos" class="file-upload-default">
+                    <span asp-validation-for="Photos" class="text-danger"></span>
+                    <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+                        <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Name</label>
+                            <div class="col-sm-9">
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Price</label>
+                            <div class="col-sm-9">
+                                <input asp-for="Price" class="form-control" />
+                                <span asp-validation-for="Price" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Discount Percent</label>
+                            <div class="col-sm-9">
+                                <textarea asp-for="DiscountPercent" class="form-control"></textarea>
+                                <span asp-validation-for="DiscountPercent" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Description</label>
+                            <div class="col-sm-9">
+                                <textarea asp-for="Description" class="form-control"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Skin Type</label>
+                            <div class="col-sm-9">
+                                <textarea asp-for="SkinType" class="form-control"></textarea>
+                                <span asp-validation-for="SkinType" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Shades</label>
+                            <div class="col-sm-9">
+                                <textarea asp-for="Shades" class="form-control"></textarea>
+                                <span asp-validation-for="Shades" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Category</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" asp-for="CategoryId" asp-items="@ViewBag.Categories"></select>
+                                <input asp-for="CategoryName" disabled class="form-control mt-2" />
+                                <span asp-validation-for="CategoryId" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Brand</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" asp-for="BrandId" asp-items="@ViewBag.Brands"></select>
+                                <input asp-for="BrandName" disabled class="form-control mt-2" />
+                                <span asp-validation-for="BrandId" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button class="btn btn-primary" style="float: right;">Submit</button>
+                    <a asp-action="Index" class="btn btn-danger" style="float: right;">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

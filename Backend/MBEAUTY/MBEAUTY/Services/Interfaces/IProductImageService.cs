@@ -1,12 +1,15 @@
-﻿using MBEAUTY.ViewModels.ProductImageVMs;
+﻿using MBEAUTY.Models;
+using MBEAUTY.ViewModels.ProductImageVMs;
 
 namespace MBEAUTY.Services.Interfaces
 {
     public interface IProductImageService
     {
-        Task AddAsync(ProductImageAddVM productImage);
-        //void Delete(int id);
-        //Task<IEnumerable<ProductListVM>> GetAllAsync();
-        //Task<ProductDetailVM> GetByIdAsync(int id);
+        Task<ICollection<ProductImage>> GetAllByProductId(int productId);
+        Task<ICollection<ProductImage>> AddAsync(int productId, IFormFile[] photos);
+        Task<ProductImage> GetByIdAsync(int id);
+        Task UpdateType(int id);
+        Task UpdateAsync(ProductImageEditVM productImage);
+        Task DeleteAsync(ProductImage productImage);
     }
 }

@@ -1,0 +1,105 @@
+﻿@model ProductDetailVM
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Product Detail</h4>
+            <div class="images">
+                @foreach (var item in Model.ProductImages)
+                {
+                    <img src="~/assets/images/@item.Name" style="object-fit: cover; width: 200px;" />
+                }
+            </div>
+            <form class="form-sample mt-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Name</label>
+                            <div class="col-sm-9">
+                                <input disabled class="form-control" value="@Model.Name" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Price</label>
+                            <div class="col-sm-9">
+                                <input disabled class="form-control" value="$ @Model.Price" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">DiscountPercent</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" disabled>@Model.DiscountPercent</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Description</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" disabled>@Model.Description</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Category</label>
+                            <div class="col-sm-9">
+                                <input disabled class="form-control" value="@Model.CategoryName" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Brand</label>
+                            <div class="col-sm-9">
+                                <input disabled class="form-control" value="@Model.BrandName" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Skin Type</label>
+                            <div class="col-sm-9">
+                                <input disabled class="form-control" value="@Model.SkinType" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Shades</label>
+                            <div class="col-sm-9">
+                                <input disabled class="form-control" value="@Model.Shades" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <a asp-action="Index" class="btn btn-danger" style="float: right;">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

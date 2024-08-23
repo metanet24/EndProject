@@ -1,4 +1,5 @@
-﻿using MBEAUTY.Models;
+﻿using AutoMapper;
+using MBEAUTY.Models;
 using MBEAUTY.Services.Interfaces;
 using MBEAUTY.ViewModels.BasketVMs;
 using MBEAUTY.ViewModels.ProductVMs;
@@ -11,13 +12,15 @@ namespace MBEAUTY.Controllers
     {
         private readonly IBasketService _basketService;
         private readonly IProductService _productService;
+        private readonly IMapper _mapper;
         private readonly UserManager<AppUser> _userManager;
 
-        public BasketController(IBasketService basketService, UserManager<AppUser> userManager, IProductService productService)
+        public BasketController(IBasketService basketService, UserManager<AppUser> userManager, IProductService productService, IMapper mapper)
         {
             _basketService = basketService;
             _userManager = userManager;
             _productService = productService;
+            _mapper = mapper;
         }
 
         [HttpPost]
@@ -31,7 +34,7 @@ namespace MBEAUTY.Controllers
 
             AppUser existUser = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            ProductDetailVM existProduct = await _productService.GetByIdAsync((int)productId);
+            ProductDetailVM existProduct = _mapper.Map<ProductDetailVM>(await _productService.GetByIdAsync((int)productId));
 
             if (existProduct == null)
                 return Json(new { redirectUrl = Url.Action("NotFound", "Error") });
