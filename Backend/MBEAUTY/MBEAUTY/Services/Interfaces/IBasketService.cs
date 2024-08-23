@@ -7,11 +7,13 @@ namespace MBEAUTY.Services.Interfaces
     {
         Task<int> AddAsync(BasketAddVM basket);
         Task AddBasketProductAsync(BasketProductAddVM basketProduct);
-        void DeleteBasketProduct(BasketProduct basketProduct);
+        Task DeleteBasketProduct(BasketProduct basketProduct);
+        Task<Basket> GetByAppUserIdAsync(string appUserId);
         Task<bool> AddBasketProductByAppUserIdAsync(string appUserId, int productId);
         Task<int> GetCountByAppUserIdAsync(string appUserId);
         Task<decimal> GetTotalByAppUserIdAsync(string appUserId);
         Task<BasketProduct> GetBasketProductByIdAsync(int id);
         Task<bool> BasketProductPlusByProductIdAndAppUserIdAsync(int productId, string appUserId);
+        Task SaveAsync();
     }
 }

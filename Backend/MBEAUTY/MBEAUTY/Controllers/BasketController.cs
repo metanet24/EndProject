@@ -23,6 +23,25 @@ namespace MBEAUTY.Controllers
             _mapper = mapper;
         }
 
+        public async Task<IActionResult> Index()
+        {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("SignIn", "Account");
+
+            AppUser existUser = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            Basket basket = await _basketService.GetByAppUserIdAsync(existUser.Id);
+
+            IEnumerable<BasketListVM> items = null;
+
+            if (basket != null)
+            {
+                items = _mapper.Map<IEnumerable<BasketListVM>>(basket.BasketProducts);
+            }
+
+            return View(items);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Add(int? productId)
         {
@@ -52,6 +71,109 @@ namespace MBEAUTY.Controllers
                 new BasketProductAddVM() { BasketId = basketId, ProductId = (int)productId });
 
             return Ok();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Increase(int id)
+        {
+            if (id == null)
+                return RedirectToAction("NotFound", "Error");
+
+            AppUser existUser = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            BasketProduct basketProduct = await _basketService.GetBasketProductByIdAsync((int)id);
+
+            if (basketProduct == null)
+                return RedirectToAction("NotFound", "Error");
+
+            basketProduct.Quantity++;
+            await _basketService.SaveAsync();
+
+            decimal totalPrice = basketProduct.Product.Price * basketProduct.Quantity;
+            decimal total = await _basketService.GetTotalByAppUserIdAsync(existUser.Id);
+
+            return Ok(new { totalPrice, total });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Decrease(int id)
+        {
+            if (id == null)
+                return RedirectToAction("NotFound", "Error");
+
+            AppUser existUser = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            BasketProduct basketProduct = await _basketService.GetBasketProductByIdAsync((int)id);
+
+            if (basketProduct == null)
+                return RedirectToAction("NotFound", "Error");
+
+            if (basketProduct.Quantity > 1)
+            {
+                basketProduct.Quantity--;
+            }
+            else
+            {
+                await _basketService.DeleteBasketProduct(basketProduct);
+            }
+            await _basketService.SaveAsync();
+
+            decimal totalPrice = basketProduct.Product.Price * basketProduct.Quantity;
+            decimal total = await _basketService.GetTotalByAppUserIdAsync(existUser.Id);
+
+            return Ok(new { totalPrice, total });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangeQuantity(int? id, int? quantity)
+        {
+            if (id == null)
+                return RedirectToAction("NotFound", "Error");
+
+            AppUser existUser = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            BasketProduct basketProduct = await _basketService.GetBasketProductByIdAsync((int)id);
+
+            if (basketProduct == null)
+                return RedirectToAction("NotFound", "Error");
+
+            if (basketProduct.Quantity > 1)
+            {
+                basketProduct.Quantity = quantity ?? basketProduct.Quantity;
+            }
+            else
+            {
+                await _basketService.DeleteBasketProduct(basketProduct);
+            }
+
+            await _basketService.SaveAsync();
+
+            decimal totalPrice = basketProduct.Product.Price * basketProduct.Quantity;
+            decimal total = await _basketService.GetTotalByAppUserIdAsync(existUser.Id);
+            int basketCount = await _basketService.GetCountByAppUserIdAsync(existUser.Id);
+
+            return Ok(new { totalPrice, total, basketCount });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+                return RedirectToAction("NotFound", "Error");
+
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("SignIn", "Account");
+
+            AppUser existUser = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            BasketProduct basketProduct = await _basketService.GetBasketProductByIdAsync((int)id);
+
+            if (basketProduct == null)
+                return RedirectToAction("NotFound", "Error");
+
+            await _basketService.DeleteBasketProduct(basketProduct);
+
+            return Ok(await _basketService.GetTotalByAppUserIdAsync(existUser.Id));
         }
     }
 }

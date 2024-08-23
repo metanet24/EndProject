@@ -1119,7 +1119,6 @@ ol, ul {
   font-size: 14px;
   border-radius: 2px;
   box-shadow: none !important;
-  border: none;
 }
 .form-control::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: rgba(0, 0, 0, 0.3) !important;

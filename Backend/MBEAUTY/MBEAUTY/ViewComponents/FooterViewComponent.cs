@@ -17,7 +17,7 @@ namespace MBEAUTY.ViewComponents
         {
             FooterVM model = new()
             {
-                Settings = await _settingService.GetAllAsync(),
+                Settings = await _settingService.GetAllDictionaryAsync(),
             };
 
             return await Task.FromResult(View(model));

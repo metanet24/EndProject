@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MBEAUTY")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3c01400118686011bd7e14de9d49cac58cd99676")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+842506ee78f9d11852d5163229c83a4ba8284d49")]
 [assembly: System.Reflection.AssemblyProductAttribute("MBEAUTY")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MBEAUTY")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

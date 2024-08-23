@@ -15,6 +15,7 @@ using MBEAUTY.ViewModels.FamousVms;
 using MBEAUTY.ViewModels.ProductImageVMs;
 using MBEAUTY.ViewModels.ProductVMs;
 using MBEAUTY.ViewModels.ServicesVMs;
+using MBEAUTY.ViewModels.SettingVMs;
 using MBEAUTY.ViewModels.SliderVMs;
 
 namespace MBEAUTY.Helpers
@@ -23,6 +24,17 @@ namespace MBEAUTY.Helpers
     {
         public MappingProfile()
         {
+            CreateMap<BasketProduct, BasketListVM>()
+                .ForMember(dest => dest.Image,
+                opt => opt.MapFrom(src => src.Product.ProductImages.FirstOrDefault(m => m.IsMain).Name))
+                .ForMember(dest => dest.TotalPrice,
+                opt => opt.MapFrom(src => src.Product.Price * src.Quantity));
+
+            CreateMap<Setting, SettingListVM>();
+            CreateMap<SettingAddVM, Setting>();
+            CreateMap<Setting, SettingEditVM>();
+            CreateMap<SettingEditVM, Setting>();
+
             CreateMap<Slider, SliderListVM>();
             CreateMap<SliderAddVM, Slider>();
             CreateMap<Slider, SliderEditVM>();
@@ -57,6 +69,7 @@ namespace MBEAUTY.Helpers
             CreateMap<AdvertEditVM, Advert>();
 
             CreateMap<ContactAddVM, Contact>();
+            CreateMap<Contact, ContactListVM>();
 
             CreateMap<SignUpVM, AppUser>();
 

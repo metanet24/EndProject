@@ -73,7 +73,7 @@ namespace MBEAUTY.Services.Implementations
             await _context.SaveChangesAsync();
         }
 
-        public async void DeleteBasketProduct(BasketProduct basketProduct)
+        public async Task DeleteBasketProduct(BasketProduct basketProduct)
         {
             _context.BasketProducts.Remove(basketProduct);
             await _context.SaveChangesAsync();
@@ -94,6 +94,20 @@ namespace MBEAUTY.Services.Implementations
         public async Task<BasketProduct> GetBasketProductByIdAsync(int id)
         {
             return await _context.BasketProducts.Include(m => m.Product).FirstOrDefaultAsync(m => m.Id == id);
+        }
+
+        public async Task<Basket> GetByAppUserIdAsync(string appUserId)
+        {
+            return await _context.Baskets
+                .Include(m => m.BasketProducts)
+                .ThenInclude(m => m.Product)
+                .ThenInclude(m => m.ProductImages)
+                .FirstOrDefaultAsync(m => m.AppUserId == appUserId);
+        }
+
+        public async Task SaveAsync()
+        {
+            await _context.SaveChangesAsync();
         }
     }
 }

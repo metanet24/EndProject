@@ -31,7 +31,7 @@ namespace MBEAUTY.ViewComponents
 
             HeaderVM model = new()
             {
-                Settings = await _settingService.GetAllAsync(),
+                Settings = await _settingService.GetAllDictionaryAsync(),
                 BasketCount = await _basketService.GetCountByAppUserIdAsync(existUser.Id)
             };
 

@@ -1,0 +1,42 @@
+﻿@model SettingEditVM
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Edit</h4>
+            <form class="mt-5" method="post" enctype="multipart/form-data">
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Key</label>
+                            <div class="col-sm-9">
+                                <input asp-for="Key" class="form-control" />
+                                <span asp-validation-for="Key" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Value</label>
+                            <div class="col-sm-9">
+                                <input asp-for="Value" class="form-control" />
+                                <span asp-validation-for="Value" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button class="btn btn-primary" style="float: right;">Submit</button>
+                    <a asp-action="Index" class="btn btn-danger" style="float: right;">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -51,14 +51,26 @@
                 </table>
 
                 <div class="col-12">
-                    <div class="pagination d-flex justify-content-center mt-5">
-                        <a asp-route-page="@(Model.CurrentPage - 1)" class="rounded @(Model.Previous == false ? "disabled" : "")">&laquo;</a>
-                        @for (int i = 1; i <= Model.TotalPage; i++)
-                        {
-                            <a asp-route-page="@i" class="rounded @(Model.Next == true ? "" : "disabled")">@i</a>
-                        }
-                        <a asp-route-page="@(Model.CurrentPage + 1)" class="rounded @(Model.Next == true ? "" : "disabled")">&raquo;</a>
-                    </div>
+                    <nav class="paginate" data-aos="fade-right" style="display: flex; justify-content: center; margin-bottom: 20px;" aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item @(!Model.Previous ? "disabled" : "")">
+                                <a asp-route-page="@(Model.CurrentPage - 1)" class="page-link" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+
+                            @for (int i = 1; i <= Model.TotalPage; i++)
+                            {
+                                <li class="page-item @(Model.CurrentPage != i ? "" : "disabled")"><a asp-route-page="@i" class="page-link">@i</a></li>
+                            }
+
+                            <li class="page-item @(Model.Next ? "" : "disabled")">
+                                <a asp-route-page="@(Model.CurrentPage + 1)" class="page-link" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
