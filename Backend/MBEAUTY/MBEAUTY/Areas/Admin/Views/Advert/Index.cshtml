@@ -32,7 +32,10 @@
                             </td>
                             <td>
                                 <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
-                                <a class="btn btn-danger delete-item" id="@Model.Id">Delete</a>
+                                @if (User.IsInRole("SuperAdmin"))
+                                {
+                                    <a class="btn btn-danger delete-item" id="@Model.Id">Delete</a>
+                                }
                             </td>
                         </tr>
                     </tbody>

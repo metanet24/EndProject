@@ -2,11 +2,13 @@
 using MBEAUTY.Helpers;
 using MBEAUTY.Services.Interfaces;
 using MBEAUTY.ViewModels.ContactVMs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MBEAUTY.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "SuperAdmin, Admin")]
     public class ContactController : Controller
     {
         private readonly IContactService _contactService;
@@ -30,6 +32,7 @@ namespace MBEAUTY.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return BadRequest();

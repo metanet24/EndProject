@@ -12,6 +12,11 @@
                 {
                     <a class="sosials p-2 pl-0"><span class="login">@User.Identity.Name</span></a>
                     <a class="sosials p-2 pl-0" asp-action="SignOut" asp-controller="Account"><span class="login">SIGN OUT</span></a>
+
+                    if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+                    {
+                        <a class="sosials p-2 pl-0" asp-area="Admin" asp-action="Index" asp-controller="Dashboard"><span class="login">ADMIN PANEL</span></a>
+                    }
                 }
                 else
                 {

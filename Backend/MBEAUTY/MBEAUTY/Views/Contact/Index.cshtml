@@ -91,39 +91,39 @@
                             <div class="contact-wrap w-100 p-md-5 p-4">
                                 <h3 class="mb-4">Contact Us</h3>
 
-                                <form method="post" id="contactForm" name="contactForm" class="contactForm">
+                                <form>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label style="color: black;" class="label" for="name">Full Name</label>
-                                                <input asp-for="FullName" class="form-control" id="name" placeholder="Name">
+                                                <input asp-for="FullName" class="form-control fullname" id="name" placeholder="Name">
                                                 <span asp-validation-for="FullName" class="text-danger"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label style="color: black;" class="label" for="email">Email Address</label>
-                                                <input asp-for="Email" class="form-control" id="email" placeholder="Email">
+                                                <input asp-for="Email" class="form-control email" id="email" placeholder="Email">
                                                 <span asp-validation-for="Email" class="text-danger"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label style="color: black;" class="label" for="subject">Subject</label>
-                                                <input asp-for="Subject" class="form-control" id="subject" placeholder="Subject">
+                                                <input asp-for="Subject" class="form-control subject" id="subject" placeholder="Subject">
                                                 <span asp-validation-for="Subject" class="text-danger"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label style="color: black;" class="label" for="#">Message</label>
-                                                <textarea asp-for="Message" class="form-control" id="message" cols="30" rows="4" placeholder="Message"></textarea>
+                                                <textarea asp-for="Message" class="form-control message" id="message" cols="30" rows="4" placeholder="Message"></textarea>
                                                 <span asp-validation-for="Message" class="text-danger"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <input type="submit" value="Send Message" class="btn bbn btn-primary btnmesagge">
+                                                <input type="submit" value="Send Message" class="btn bbn btn-primary btnmesagge add-contact">
                                             </div>
                                         </div>
                                     </div>
@@ -138,4 +138,8 @@
         </div>
     </div>
 </section>
+
 <partial name="_ValidationScriptsPartial" />
+@section Scripts {
+    <script src="~/js/shop.js"></script>
+}

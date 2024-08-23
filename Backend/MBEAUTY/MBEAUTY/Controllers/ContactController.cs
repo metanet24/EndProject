@@ -19,11 +19,11 @@ namespace MBEAUTY.Controllers
 
         public async Task<IActionResult> Index()
         {
+            AppUser user = new();
             ContactAddVM model = new();
 
             if (User.Identity.IsAuthenticated)
             {
-                AppUser user = new();
                 user = await _userManager.FindByNameAsync(User.Identity.Name);
 
                 model.FullName = user.FullName;
@@ -34,14 +34,9 @@ namespace MBEAUTY.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(ContactAddVM request)
+        public async Task<IActionResult> Add(ContactAddVM request)
         {
-            AppUser user = new();
-
-            if (User.Identity.IsAuthenticated) user = await _userManager.FindByNameAsync(User.Identity.Name);
-
             if (!ModelState.IsValid) return View(request);
-
             await _contactService.AddAsync(request);
             return Ok();
         }

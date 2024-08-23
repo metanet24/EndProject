@@ -127,8 +127,7 @@ namespace MBEAUTY.Controllers
         [HttpPost]
         public async Task<IActionResult> ChangeQuantity(int? id, int? quantity)
         {
-            if (id == null)
-                return RedirectToAction("NotFound", "Error");
+            if (id == null) return RedirectToAction("NotFound", "Error");
 
             AppUser existUser = await _userManager.FindByNameAsync(User.Identity.Name);
 
@@ -137,7 +136,7 @@ namespace MBEAUTY.Controllers
             if (basketProduct == null)
                 return RedirectToAction("NotFound", "Error");
 
-            if (basketProduct.Quantity > 1)
+            if (quantity != null && quantity != 0)
             {
                 basketProduct.Quantity = quantity ?? basketProduct.Quantity;
             }

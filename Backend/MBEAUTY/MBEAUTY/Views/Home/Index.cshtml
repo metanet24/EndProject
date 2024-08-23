@@ -33,10 +33,10 @@
                     </div>
                     <div class="product-details">
                         <span class="product-catagory">@item.CategoryName</span>
-                        <h4><a href="">@item.Name</a></h4>
+                        <h4><a asp-action="Detail" asp-controller="Shop" asp-route-id="@item.Id">@item.Name</a></h4>
                         <div class="product-bottom-details">
                             <div class="product-price"><small>$@item.Price.ToString("N2")</small>$@(((item.Price / 100) * item.DiscountPercent).ToString("N2"))</div>
-                            <div class="product-links">
+                            <div class="add-basket product-links" product-id="@item.Id">
                                 <a href=""><i class="fa fa-shopping-cart"></i></a>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
     <div class="find">
         <div data-aos="fade-up" class="find-div">
             <h2 class="find-h2">@Model.Products.FirstOrDefault().Description</h2>
-            <a class="btn btn-dark explore" asp-action="Detail" asp-controller="Product" asp-route-id="@Model.Products.FirstOrDefault().Id"><span>Shop Now</span></a>
+            <a class="btn btn-dark explore" asp-action="Detail" asp-controller="Shop" asp-route-id="@Model.Products.FirstOrDefault().Id"><span>Shop Now</span></a>
         </div>
         <div data-aos="fade-up" class=""><img class="foto-find" src="~/assets/images/@Model.Products.FirstOrDefault()?.Image" alt=""></div>
     </div>

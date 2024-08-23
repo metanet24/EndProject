@@ -15,7 +15,7 @@
 
     <div class="container">
         <div class="row mt-5">
-            <div class="col-lg-8 blogsingle yeah12 ">
+            <div class="col-lg-8 blogsingle yeah12">
                 <img src="~/assets/images/@Model.BlogImages.FirstOrDefault(m => m.IsMain)?.Name" alt="">
                 <h2>@Model.Name</h2>
                 <p style="margin-top:-10px" class="p">@Model.Description</p>
@@ -29,11 +29,11 @@
                         <div style="display: flex;" class="catagoriyes-blog-image">
                             <img class="catagoriyes-blog-image-img" src="~/assets/images/@item.Image" />
                             <div class="catagoriyes-blog-image-item">
-                                <p>@item.Name</p>
+                                <p><a asp-route-id="@item.Id" style="color: black;">@item.Name</a></p>
                             </div>
                         </div>
                         <div class="meta1">
-                            <div><a href="#"><span class="fa fa-calendar"></span>@item.CreatedAt.ToString("MMM. dd, yyyy")</a></div>
+                            <div><a><span class="fa fa-calendar"></span>@item.CreatedAt.ToString("MMM. dd, yyyy")</a></div>
                         </div>
                     </div>
                 }

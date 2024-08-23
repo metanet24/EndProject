@@ -24,7 +24,7 @@
             </div>
             <div class="cart-btn-div" style="margin-top: 100px;">
 
-                <div class="cart">
+                <div class="cart add-basket" product-id="@Model.Id">
                     <a class="cart-btn" href="#"><i class="bi bi-cart-check-fill" style="margin-right: 5px;"></i>Add to Cart</a>
                 </div>
             </div>
@@ -86,8 +86,8 @@
                             {
                                 <div class="product-price">$@item.Price.ToString("N2")</div>
                             }
-                            <div class="product-links">
-                                <a href=""><i class="fa fa-shopping-cart"></i></a>
+                            <div class="product-links add-basket" product-id="@item.Id">
+                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
                             </div>
                         </div>
                     </div>
@@ -95,3 +95,7 @@
             }
         </div>
 </section>
+
+@section Scripts {
+    <script src="~/js/basket.js"></script>
+}

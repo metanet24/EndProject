@@ -47,7 +47,10 @@
                                     @item.Message
                                 </td>
                                 <td>
-                                    <a class="btn btn-danger delete-item" id="@item.Id">Delete</a>
+                                    @if (User.IsInRole("SuperAdmin"))
+                                    {
+                                        <a class="btn btn-danger delete-item" id="@item.Id">Delete</a>
+                                    }
                                 </td>
                             </tr>
                         }

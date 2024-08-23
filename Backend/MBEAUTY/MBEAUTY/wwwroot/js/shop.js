@@ -55,4 +55,44 @@
             },
         });
     });
+
+    // Contact
+    $('.add-contact').on('click', (e) => {
+        e.preventDefault();
+
+        const fullnameVal = $(".fullname").val();
+        const emailVal = $(".email").val();
+        const subjectVal = $(".subject").val();
+        const messageVal = $(".message").val();
+
+        if (fullnameVal === "" || emailVal === "" || subjectVal === "" || messageVal === "") {
+            Swal.fire({
+                title: "Inputs must be full!",
+                icon: "warning",
+                confirmButtonColor: "#3085d6",
+                confirmButtonText: "Ok",
+                timer: 1500
+            });
+            return;
+        }
+
+        $.ajax({
+            type: "Post",
+            url: "/Contact/Add",
+            data: {
+                fullname: fullnameVal,
+                email: emailVal,
+                subject: subjectVal,
+                message: messageVal
+            },
+            success: () => {
+                Swal.fire({
+                    icon: "success",
+                    title: "Your application has been accepted!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            },
+        });
+    });
 })(jQuery);

@@ -26,7 +26,6 @@ namespace MBEAUTY.Areas.Admin.Controllers
             return View(_mapper.Map<AdvertVM>(await _advertService.GetAsync()));
         }
 
-        [Authorize(Roles = "SuperAdmin")]
         public IActionResult Create()
         {
             return View();

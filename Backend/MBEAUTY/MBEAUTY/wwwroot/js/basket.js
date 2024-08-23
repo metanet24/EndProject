@@ -2,7 +2,8 @@
     "use strict";
 
     // Add
-    $(document).on("click", ".add-basket", function () {
+    $(document).on("click", ".add-basket", function (e) {
+        e.preventDefault();
         const productId = $(this).attr('product-id');
 
         $.ajax({
@@ -87,10 +88,9 @@
                 type: "Post",
                 url: `Basket/Decrease?id=${id}`,
                 success: function (res) {
-
                     basketItem.find(".total").text(res.totalPrice + ' $');
 
-                    const count = $(".basket-count");
+                    const count = $(".product-count");
                     count.text(parseInt(count.html()) - 1);
 
                     const currentVal = parseInt(btn.closest(".basket-item").find(".quantity input").val());
@@ -109,7 +109,6 @@
         const basketItem = input.closest(".basket-item");
         const id = basketItem.attr('id');
         const count = $(".product-count");
-
 
         if (quantity == 0) {
             Swal.fire({
