@@ -175,7 +175,7 @@ namespace MBEAUTY.Areas.Admin.Controllers
                 await _blogImageService.DeleteAsync(item);
             }
 
-            await _blogService.Delete(existItem);
+            await _blogService.DeleteAsync(existItem);
             return Ok();
         }
     }

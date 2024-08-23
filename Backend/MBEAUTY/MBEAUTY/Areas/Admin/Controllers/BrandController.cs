@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using Fruitables_Backend.Helpers;
 using MBEAUTY.Helpers;
+using MBEAUTY.Models;
 using MBEAUTY.Services.Interfaces;
 using MBEAUTY.ViewModels.BrandVMs;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +29,92 @@ namespace MBEAUTY.Areas.Admin.Controllers
             var paginateItems = new Paginate<BrandListVM>(items, page, await _brandService.GetPageCount(take));
 
             return View(paginateItems);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(BrandAddVM request)
+        {
+            if (!ModelState.IsValid) return View(request);
+
+            IEnumerable<Brand> items = await _brandService.GetAllAsync();
+
+            if (items.Any(m => m.Name == request.Name))
+            {
+                ModelState.AddModelError("Name", "Name already exists");
+                return View(request);
+            }
+
+            if (!request.Photo.CheckFileType("image/"))
+            {
+                ModelState.AddModelError("Photo", "Please, choose correct image type");
+                return View(request);
+            }
+
+            if (!request.Photo.CheckFileSize(10000))
+            {
+                ModelState.AddModelError("Photo", "Please, choose correct image size");
+                return View(request);
+            }
+
+            await _brandService.AddAsync(request);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null) return BadRequest();
+
+            Brand existItem = await _brandService.GetByIdAsync((int)id);
+
+            if (existItem == null) return NotFound();
+
+            return View(_mapper.Map<BrandEditVM>(existItem));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, BrandEditVM request)
+        {
+            if (!ModelState.IsValid) return View(request);
+
+            Brand existItem = await _brandService.GetByIdAsync(id);
+
+            if (request.Photo != null)
+            {
+                if (!request.Photo.CheckFileType("image/"))
+                {
+                    ModelState.AddModelError("Photo", "Please, choose correct image type");
+                    return View(request);
+                }
+
+                if (!request.Photo.CheckFileSize(10000))
+                {
+                    ModelState.AddModelError("Photo", "Please, choose correct image size");
+                    return View(request);
+                }
+            }
+
+            await _brandService.UpdateAsync(request);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null) return BadRequest();
+
+            var existItem = await _brandService.GetByIdAsync((int)id);
+
+            await _brandService.DeleteAsync(existItem);
+            return Ok();
         }
     }
 }

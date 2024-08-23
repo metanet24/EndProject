@@ -7,7 +7,7 @@ namespace MBEAUTY.Services.Interfaces
     {
         Task<int> AddAsync(BlogAddVM blog);
         Task UpdateAsync(BlogEditVM blog);
-        Task Delete(Blog blog);
+        Task DeleteAsync(Blog blog);
         Task<IEnumerable<Blog>> GetAllAsync();
         Task<Blog> GetByIdAsync(int id);
         Task<int> GetPageCount(int take);

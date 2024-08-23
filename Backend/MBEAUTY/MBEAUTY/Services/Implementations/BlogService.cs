@@ -36,7 +36,7 @@ namespace MBEAUTY.Services.Implementations
             await _context.SaveChangesAsync();
         }
 
-        public async Task Delete(Blog blog)
+        public async Task DeleteAsync(Blog blog)
         {
             _context.Blogs.Remove(blog);
             await _context.SaveChangesAsync();
