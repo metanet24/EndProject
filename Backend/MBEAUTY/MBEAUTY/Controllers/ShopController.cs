@@ -2,7 +2,9 @@
 using MBEAUTY.Helpers;
 using MBEAUTY.Services.Interfaces;
 using MBEAUTY.ViewModels;
+using MBEAUTY.ViewModels.AdvertVMs;
 using MBEAUTY.ViewModels.BrandVMs;
+using MBEAUTY.ViewModels.CategoryVMs;
 using MBEAUTY.ViewModels.ProductVMs;
 using Microsoft.AspNetCore.Mvc;
 
@@ -49,9 +51,9 @@ namespace MBEAUTY.Controllers
             {
                 PaginateProducts = paginateProducts,
                 Products = products,
-                Categories = await _categoryService.GetAllAsync(),
+                Categories = _mapper.Map<IEnumerable<CategoryListVM>>(await _categoryService.GetAllAsync()),
                 Brands = _mapper.Map<IEnumerable<BrandListVM>>(await _brandService.GetAllAsync()),
-                Advert = await _advertService.GetAsync()
+                Advert = _mapper.Map<AdvertVM>(await _advertService.GetAsync())
             };
 
             return View(model);

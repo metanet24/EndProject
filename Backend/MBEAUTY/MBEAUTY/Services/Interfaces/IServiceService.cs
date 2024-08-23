@@ -5,10 +5,10 @@ namespace MBEAUTY.Services.Interfaces
 {
     public interface IServiceService
     {
-        Task AddAsync(Service service);
-        void Delete(Service service);
-        Task<IEnumerable<ServiceListVM>> GetAllAsync();
+        Task AddAsync(ServiceAddVM item);
+        Task UpdateAsync(ServiceEditVM item);
+        Task DeleteAsync(Service item);
+        Task<IEnumerable<Service>> GetAllAsync();
         Task<Service> GetByIdAsync(int id);
-        Task SaveAsync();
     }
 }

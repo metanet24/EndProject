@@ -24,14 +24,27 @@ namespace MBEAUTY.Helpers
         public MappingProfile()
         {
             CreateMap<Slider, SliderListVM>();
+            CreateMap<SliderAddVM, Slider>();
+            CreateMap<Slider, SliderEditVM>();
+            CreateMap<SliderEditVM, Slider>();
 
             CreateMap<Banner, BannerVM>();
+            CreateMap<BannerEditVM, Banner>();
+            CreateMap<Banner, BannerEditVM>();
 
             CreateMap<Service, ServiceListVM>();
+            CreateMap<ServiceAddVM, Service>();
+            CreateMap<Service, ServiceEditVM>();
+            CreateMap<ServiceEditVM, Service>();
 
             CreateMap<About, AboutVM>();
+            CreateMap<About, AboutEditVM>();
+            CreateMap<AboutEditVM, About>();
 
             CreateMap<Famous, FamousListVM>();
+            CreateMap<FamousAddVM, Famous>();
+            CreateMap<Famous, FamousEditVM>();
+            CreateMap<FamousEditVM, Famous>();
 
             CreateMap<Brand, BrandListVM>();
             CreateMap<BrandAddVM, Brand>();
@@ -39,6 +52,9 @@ namespace MBEAUTY.Helpers
             CreateMap<BrandEditVM, Brand>();
 
             CreateMap<Advert, AdvertVM>();
+            CreateMap<AdvertAddVM, Advert>();
+            CreateMap<Advert, AdvertEditVM>();
+            CreateMap<AdvertEditVM, Advert>();
 
             CreateMap<ContactAddVM, Contact>();
 
@@ -68,6 +84,9 @@ namespace MBEAUTY.Helpers
             CreateMap<AdditionalInfoDetailVM, AdditionalInfoEditVM>();
             CreateMap<AdditionalInfoEditVM, AdditionalInfo>();
 
+            CreateMap<CategoryAddVM, Category>();
+            CreateMap<Category, CategoryEditVM>();
+            CreateMap<CategoryEditVM, Category>();
             CreateMap<Category, CategoryListVM>()
                 .ForMember(dest => dest.ProductCount, opt => opt.MapFrom(src => src.Products.Count()));
 

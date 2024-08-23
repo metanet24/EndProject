@@ -6,11 +6,12 @@ namespace MBEAUTY.Services.Interfaces
 {
     public interface ICategoryService
     {
-        Task AddAsync(Category category);
-        void Delete(Category category);
-        Task<IEnumerable<CategoryListVM>> GetAllAsync();
+        Task AddAsync(CategoryAddVM category);
+        Task UpdateAsync(CategoryEditVM category);
+        Task DeleteAsync(Category category);
+        Task<IEnumerable<Category>> GetAllAsync();
         Task<SelectList> GetAllSelectAsync();
         Task<Category> GetByIdAsync(int id);
-        Task SaveAsync();
+        Task<int> GetPageCount(int take);
     }
 }

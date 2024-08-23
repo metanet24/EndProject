@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
 using MBEAUTY.Services.Interfaces;
 using MBEAUTY.ViewModels;
+using MBEAUTY.ViewModels.BannnerVMs;
 using MBEAUTY.ViewModels.BlogVMs;
 using MBEAUTY.ViewModels.BrandVMs;
 using MBEAUTY.ViewModels.ProductVMs;
+using MBEAUTY.ViewModels.ServicesVMs;
+using MBEAUTY.ViewModels.SliderVMs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MBEAUTY.Controllers
@@ -33,11 +36,11 @@ namespace MBEAUTY.Controllers
         {
             HomeVM model = new()
             {
-                Sliders = await _sliderService.GetAllAsync(),
+                Sliders = _mapper.Map<IEnumerable<SliderListVM>>(await _sliderService.GetAllAsync()),
                 Products = _mapper.Map<IEnumerable<ProductListVM>>(await _productService.GetAllAsync()),
-                Banner = await _bannerService.GetAsync(),
+                Banner = _mapper.Map<BannerVM>(await _bannerService.GetAsync()),
                 Brands = _mapper.Map<IEnumerable<BrandListVM>>(await _brandService.GetAllAsync()),
-                Services = await _serviceService.GetAllAsync(),
+                Services = _mapper.Map<IEnumerable<ServiceListVM>>(await _serviceService.GetAllAsync()),
                 Blogs = _mapper.Map<IEnumerable<BlogListVM>>(await _blogService.GetAllAsync())
             };
 

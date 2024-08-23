@@ -5,8 +5,8 @@ namespace MBEAUTY.Services.Interfaces
 {
     public interface IAboutService
     {
-        Task UpdateAsync(About model);
-        Task<AboutVM> GetAsync();
-        Task SaveAsync();
+        Task UpdateAsync(AboutEditVM item);
+        Task<About> GetAsync();
+        Task<About> GetByIdAsync(int id);
     }
 }

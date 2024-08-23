@@ -18,32 +18,34 @@ namespace MBEAUTY.Services.Implementations
             _mapper = mapper;
         }
 
-        public Task AddAsync(Service service)
+        public async Task AddAsync(ServiceAddVM item)
         {
-            throw new NotImplementedException();
+            await _context.Services.AddAsync(_mapper.Map<Service>(item));
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(Service service)
+        public async Task UpdateAsync(ServiceEditVM item)
         {
-            throw new NotImplementedException();
+            var existItem = await GetByIdAsync(item.Id);
+            _context.Services.Update(_mapper.Map(item, existItem));
+            await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<ServiceListVM>> GetAllAsync()
+        public async Task DeleteAsync(Service item)
         {
-            IEnumerable<Service> services = await _context.Services.Where(m => !m.SoftDeleted)
+            _context.Services.Remove(item);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Service>> GetAllAsync()
+        {
+            return await _context.Services.Where(m => !m.SoftDeleted)
                 .OrderByDescending(m => m.Id).ToListAsync();
-
-            return _mapper.Map<IEnumerable<ServiceListVM>>(services);
         }
 
-        public Task<Service> GetByIdAsync(int id)
+        public async Task<Service> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task SaveAsync()
-        {
-            throw new NotImplementedException();
+            return await _context.Services.Where(m => !m.SoftDeleted).FirstOrDefaultAsync(m => m.Id == id);
         }
     }
 }

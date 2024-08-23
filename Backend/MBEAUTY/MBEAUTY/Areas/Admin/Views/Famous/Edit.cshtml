@@ -1,0 +1,59 @@
+﻿@model FamousEditVM
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Product Edit</h4>
+            <div class="images" style="display: flex; gap: 30px;">
+                <div class="image">
+                    <img src="~/assets/images/@Model.Image" style="object-fit: cover; width: 200px; display: block;" />
+                </div>
+            </div>
+            <form class="mt-5" method="post" enctype="multipart/form-data">
+                <input asp-for="@Model.Image" type="hidden" />
+                <div class="form-group">
+                    <label>File upload</label>
+                    <input asp-for="Photo" class="file-upload-default">
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                    <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+                        <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">FullName</label>
+                            <div class="col-sm-9">
+                                <input asp-for="FullName" class="form-control" />
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">About</label>
+                            <div class="col-sm-9">
+                                <input asp-for="About" class="form-control" />
+                                <span asp-validation-for="About" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button class="btn btn-primary" style="float: right;">Submit</button>
+                    <a asp-action="Index" class="btn btn-danger" style="float: right;">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

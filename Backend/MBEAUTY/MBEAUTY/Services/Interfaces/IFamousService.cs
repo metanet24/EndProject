@@ -5,10 +5,11 @@ namespace MBEAUTY.Services.Interfaces
 {
     public interface IFamousService
     {
-        Task AddAsync(Famous famous);
-        void Delete(Famous famous);
-        Task<IEnumerable<FamousListVM>> GetAllAsync();
+        Task AddAsync(FamousAddVM item);
+        Task UpdateAsync(FamousEditVM item);
+        Task DeleteAsync(Famous item);
+        Task<IEnumerable<Famous>> GetAllAsync();
         Task<Famous> GetByIdAsync(int id);
-        Task SaveAsync();
+        Task<int> GetPageCount(int take);
     }
 }

@@ -5,8 +5,8 @@ namespace MBEAUTY.Services.Interfaces
 {
     public interface IBannerService
     {
-        Task UpdateAsync(Banner model);
-        Task SaveAsync();
-        Task<BannerVM> GetAsync();
+        Task UpdateAsync(BannerEditVM item);
+        Task<Banner> GetAsync();
+        Task<Banner> GetByIdAsync(int id);
     }
 }

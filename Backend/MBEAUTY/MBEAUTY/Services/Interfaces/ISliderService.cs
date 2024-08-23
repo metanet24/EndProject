@@ -5,10 +5,10 @@ namespace MBEAUTY.Services.Interfaces
 {
     public interface ISliderService
     {
-        Task AddAsync(Slider slider);
-        void Delete(Slider slider);
-        Task<IEnumerable<SliderListVM>> GetAllAsync();
+        Task AddAsync(SliderAddVM item);
+        Task UpdateAsync(SliderEditVM item);
+        Task DeleteAsync(Slider item);
+        Task<IEnumerable<Slider>> GetAllAsync();
         Task<Slider> GetByIdAsync(int id);
-        Task SaveChangesAsync();
     }
 }

@@ -19,22 +19,29 @@ namespace MBEAUTY.Services.Implementations
             _mapper = mapper;
         }
 
-        public Task AddAsync(Category category)
+        public async Task AddAsync(CategoryAddVM category)
         {
-            throw new NotImplementedException();
+            await _context.Categories.AddAsync(_mapper.Map<Category>(category));
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(Category category)
+        public async Task UpdateAsync(CategoryEditVM item)
         {
-            throw new NotImplementedException();
+            var existItem = await GetByIdAsync(item.Id);
+            _context.Categories.Update(_mapper.Map(item, existItem));
+            await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<CategoryListVM>> GetAllAsync()
+        public async Task DeleteAsync(Category category)
         {
-            IEnumerable<Category> categories = await _context.Categories.Where(m => !m.SoftDeleted)
+            _context.Categories.Remove(category);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Category>> GetAllAsync()
+        {
+            return await _context.Categories.Where(m => !m.SoftDeleted)
                 .Include(m => m.Products).OrderByDescending(m => m.Id).ToListAsync();
-
-            return _mapper.Map<IEnumerable<CategoryListVM>>(categories);
         }
 
         public async Task<SelectList> GetAllSelectAsync()
@@ -42,14 +49,16 @@ namespace MBEAUTY.Services.Implementations
             return new SelectList(await GetAllAsync(), "Id", "Name");
         }
 
-        public Task<Category> GetByIdAsync(int id)
+        public async Task<Category> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Categories.Where(m => !m.SoftDeleted).FirstOrDefaultAsync(m => m.Id == id);
         }
 
-        public Task SaveAsync()
+        public async Task<int> GetPageCount(int take)
         {
-            throw new NotImplementedException();
+            IEnumerable<Category> items = await GetAllAsync();
+
+            return (int)Math.Ceiling((decimal)items.Count() / take);
         }
     }
 }
