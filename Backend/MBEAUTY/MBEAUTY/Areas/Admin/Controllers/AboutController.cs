@@ -3,11 +3,13 @@ using Fruitables_Backend.Helpers;
 using MBEAUTY.Models;
 using MBEAUTY.Services.Interfaces;
 using MBEAUTY.ViewModels.AboutVms;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MBEAUTY.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "SuperAdmin, Admin")]
     public class AboutController : Controller
     {
         private readonly IAboutService _aboutService;

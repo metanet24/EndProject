@@ -3,11 +3,13 @@ using Fruitables_Backend.Helpers;
 using MBEAUTY.Models;
 using MBEAUTY.Services.Interfaces;
 using MBEAUTY.ViewModels.AdvertVMs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MBEAUTY.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "SuperAdmin, Admin")]
     public class AdvertController : Controller
     {
         private readonly IAdvertService _advertService;
@@ -24,6 +26,7 @@ namespace MBEAUTY.Areas.Admin.Controllers
             return View(_mapper.Map<AdvertVM>(await _advertService.GetAsync()));
         }
 
+        [Authorize(Roles = "SuperAdmin")]
         public IActionResult Create()
         {
             return View();
@@ -90,6 +93,7 @@ namespace MBEAUTY.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return BadRequest();
